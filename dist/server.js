@@ -11,12 +11,17 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dirname, '..');
 const port = Number(process.env.PORT ?? 3000);
 const siteUrl = (process.env.SITE_URL ?? 'https://crv4mayorista.com.ar').replace(/\/+$/, '');
+const publicPath = path.join(projectRoot, 'public');
+const rootUploadsPath = path.join(projectRoot, 'uploads');
+const publicUploadsPath = path.join(publicPath, 'uploads');
 const app = express();
 app.disable('x-powered-by');
 app.set('trust proxy', true);
 app.use(compression());
 app.use(helmet({ contentSecurityPolicy: false }));
-app.use(express.static(path.join(projectRoot, 'public'), { maxAge: '1h' }));
+app.use('/uploads', express.static(rootUploadsPath, { maxAge: '1h' }));
+app.use('/uploads', express.static(publicUploadsPath, { maxAge: '1h' }));
+app.use(express.static(publicPath, { maxAge: '1h' }));
 app.get('/health', (_request, response) => {
     response.json({ ok: true });
 });

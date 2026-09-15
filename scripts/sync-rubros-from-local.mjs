@@ -9,6 +9,7 @@ const localApiUser = requireEnv('LOCAL_API_USER')
 const localApiPassword = requireEnv('LOCAL_API_PASSWORD')
 const projectRoot = process.cwd()
 const publicUploadsPath = path.join(projectRoot, 'public', 'uploads', 'rubros')
+const rootUploadsPath = path.join(projectRoot, 'uploads', 'rubros')
 const dataPath = path.join(projectRoot, 'data', 'rubros.json')
 
 if (process.env.ALLOW_SELF_SIGNED_LOCAL_API !== 'false') {
@@ -16,6 +17,7 @@ if (process.env.ALLOW_SELF_SIGNED_LOCAL_API !== 'false') {
 }
 
 await mkdir(publicUploadsPath, { recursive: true })
+await mkdir(rootUploadsPath, { recursive: true })
 
 const token = await login()
 const localRubros = await getLocalRubros(token)
@@ -109,6 +111,7 @@ async function syncImage(imagePath, token) {
 
   const buffer = Buffer.from(await response.arrayBuffer())
   await writeFile(path.join(publicUploadsPath, fileName), buffer)
+  await writeFile(path.join(rootUploadsPath, fileName), buffer)
   return `/uploads/rubros/${fileName}`
 }
 
