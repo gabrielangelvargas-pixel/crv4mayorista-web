@@ -1,0 +1,11 @@
+[
+  {
+    "codigo": "00",
+    "nombre": "Cosmetica",
+    "descripcion": "Productos mayoristas de cosmetica y accesorios seleccionados para revendedores.",
+    "imagenPrincipal": "",
+    "idPadre": null,
+    "nombrePadre": null,
+    "orden": 0
+  }
+]
