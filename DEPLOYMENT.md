@@ -9,6 +9,7 @@ Esta app esta preparada para desplegarse como **Node.js Web App** desde GitHub.
 - Install command: `npm install`
 - Build command: `npm run build`
 - Start command: `npm run start`
+- Startup file: `server.js`
 - Branch: `main`
 - Dominio: `crv4mayorista.com.ar`
 

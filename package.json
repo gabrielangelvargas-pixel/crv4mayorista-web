@@ -10,7 +10,7 @@
     "dev": "tsx watch src/server.ts",
     "build": "node scripts/verify-build.mjs",
     "build:local": "tsc",
-    "start": "node dist/server.js",
+    "start": "node server.js",
     "check": "tsc --noEmit"
   },
   "dependencies": {
