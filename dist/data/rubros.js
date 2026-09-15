@@ -30,6 +30,7 @@ async function getDatabaseRubros() {
     }
     const connection = await mysql.createConnection(databaseUrl);
     try {
+        await ensureRubrosColumns(connection);
         const [rows] = await connection.execute(`
       SELECT
         r.Id,
@@ -39,9 +40,12 @@ async function getDatabaseRubros() {
         r.ImagenPrincipal,
         r.IdPadre,
         padre.NombreRubro AS NombrePadre,
-        r.Orden
+        r.Orden,
+        r.Activo,
+        r.FechaModificacion
       FROM rubros r
       LEFT JOIN rubros padre ON padre.Id = r.IdPadre
+      WHERE COALESCE(r.Activo, 1) = 1
       ORDER BY r.IdRubro
     `);
         return sortRubros(rows.map((row) => ({
@@ -52,16 +56,41 @@ async function getDatabaseRubros() {
             idPadre: row.IdPadre,
             nombrePadre: row.NombrePadre,
             orden: row.Orden ?? 0,
+            activo: Boolean(row.Activo ?? true),
+            fechaModificacion: normalizeDate(row.FechaModificacion),
         })));
     }
     finally {
         await connection.end();
     }
 }
+async function ensureRubrosColumns(connection) {
+    await ensureRubrosColumn(connection, 'Activo', 'TINYINT(1) NOT NULL DEFAULT 1 AFTER `Orden`');
+    await ensureRubrosColumn(connection, 'FechaModificacion', 'DATETIME NULL AFTER `Activo`');
+}
+async function ensureRubrosColumn(connection, columnName, columnDefinition) {
+    const [rows] = await connection.execute(`
+      SELECT COUNT(*) AS total
+      FROM information_schema.COLUMNS
+      WHERE TABLE_SCHEMA = DATABASE()
+        AND TABLE_NAME = 'rubros'
+        AND COLUMN_NAME = ?
+    `, [columnName]);
+    if (Number(rows[0]?.total ?? 0) > 0) {
+        return;
+    }
+    await connection.execute(`ALTER TABLE rubros ADD COLUMN ${columnName} ${columnDefinition}`);
+}
 function sortRubros(rubros) {
     return rubros
-        .filter((rubro) => rubro.codigo && rubro.nombre)
+        .filter((rubro) => rubro.codigo && rubro.nombre && rubro.activo !== false)
         .sort((first, second) => compareCodes(first.codigo, second.codigo));
+}
+function normalizeDate(value) {
+    if (!value) {
+        return null;
+    }
+    return value instanceof Date ? value.toISOString() : value;
 }
 export async function getRubroByCodigo(codigo) {
     const normalizedCode = codigo.trim().toLowerCase();

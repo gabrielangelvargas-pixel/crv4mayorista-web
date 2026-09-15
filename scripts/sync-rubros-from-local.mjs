@@ -1,5 +1,5 @@
 import 'dotenv/config'
-import { mkdir, writeFile } from 'node:fs/promises'
+import { access, mkdir, unlink, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import mysql from 'mysql2/promise'
 
@@ -21,26 +21,13 @@ await mkdir(rootUploadsPath, { recursive: true })
 
 const token = await login()
 const localRubros = await getLocalRubros(token)
-const rubros = []
-
-for (const rubro of localRubros) {
-  rubros.push({
-    localId: rubro.id,
-    codigo: rubro.codigo,
-    nombre: rubro.nombre,
-    descripcion: rubro.descripcion ?? null,
-    imagenPrincipal: await syncImage(rubro.imagenPrincipal, token),
-    localIdPadre: rubro.idPadre ?? null,
-    nombrePadre: rubro.nombrePadre ?? null,
-    orden: rubro.orden ?? 0,
-  })
-}
-
-const publicRubros = rubros.map(({ localId: _localId, localIdPadre: _localIdPadre, ...rubro }) => rubro)
+const { rubros, changedCount, skippedCount } = await syncDatabase(localRubros, token)
+const publicRubros = rubros
+  .map(({ localId: _localId, localIdPadre: _localIdPadre, ...rubro }) => rubro)
+  .filter((rubro) => rubro.activo)
 await writeFile(dataPath, `${JSON.stringify(publicRubros, null, 2)}\n`, 'utf8')
-await syncDatabase(rubros)
 
-console.log(`Rubros sincronizados: ${rubros.length}`)
+console.log(`Rubros revisados: ${rubros.length}. Actualizados: ${changedCount}. Sin cambios: ${skippedCount}.`)
 
 function requireEnv(name) {
   const value = process.env[name]
@@ -115,12 +102,71 @@ async function syncImage(imagePath, token) {
   return `/uploads/rubros/${fileName}`
 }
 
+async function ensureSyncedImage(imagePath, token, forceDownload) {
+  const publicImagePath = getPublicImagePath(imagePath)
+  if (!publicImagePath) {
+    return null
+  }
+
+  if (/^https?:\/\//i.test(publicImagePath)) {
+    return publicImagePath
+  }
+
+  if (!forceDownload && await fileExistsInUploads(publicImagePath)) {
+    return publicImagePath
+  }
+
+  return await syncImage(imagePath, token)
+}
+
+function getPublicImagePath(imagePath) {
+  if (!imagePath) {
+    return null
+  }
+
+  if (/^https?:\/\//i.test(imagePath)) {
+    return imagePath
+  }
+
+  const fileName = sanitizeFileName(path.basename(imagePath))
+  return fileName ? `/uploads/rubros/${fileName}` : null
+}
+
+async function fileExistsInUploads(publicImagePath) {
+  const fileName = path.basename(publicImagePath)
+  try {
+    await access(path.join(publicUploadsPath, fileName))
+    await access(path.join(rootUploadsPath, fileName))
+    return true
+  } catch {
+    return false
+  }
+}
+
+async function deleteSyncedImage(imagePath) {
+  if (!imagePath || !imagePath.startsWith('/uploads/rubros/')) {
+    return
+  }
+
+  const fileName = path.basename(imagePath)
+  await Promise.all([
+    unlink(path.join(publicUploadsPath, fileName)).catch(ignoreMissingFile),
+    unlink(path.join(rootUploadsPath, fileName)).catch(ignoreMissingFile),
+  ])
+}
+
+function ignoreMissingFile(error) {
+  if (error?.code !== 'ENOENT') {
+    throw error
+  }
+}
+
 function sanitizeFileName(fileName) {
   const normalized = fileName.replace(/[^a-zA-Z0-9._-]/g, '')
   return normalized || null
 }
 
-async function syncDatabase(rubros) {
+async function syncDatabase(localRubros, token) {
   const connection = await mysql.createConnection(databaseUrl)
   try {
     await connection.beginTransaction()
@@ -133,25 +179,69 @@ async function syncDatabase(rubros) {
         ImagenPrincipal VARCHAR(255) NULL,
         IdPadre INT NULL,
         Orden INT NOT NULL DEFAULT 0,
+        Activo TINYINT(1) NOT NULL DEFAULT 1,
+        FechaModificacion DATETIME NULL,
         PRIMARY KEY (Id),
         UNIQUE KEY uq_rubros_IdRubro (IdRubro),
         KEY fk_rubros_padre (IdPadre)
       )
     `)
+    await ensureRemoteColumn(connection, 'Activo', 'TINYINT(1) NOT NULL DEFAULT 1 AFTER `Orden`')
+    await ensureRemoteColumn(connection, 'FechaModificacion', 'DATETIME NULL AFTER `Activo`')
 
-    for (const rubro of rubros) {
+    const [existingRows] = await connection.execute(`
+      SELECT Id, IdRubro, NombreRubro, Descripcion, ImagenPrincipal, Orden, Activo, FechaModificacion
+      FROM rubros
+    `)
+    const existingByCode = new Map(existingRows.map((row) => [row.IdRubro, row]))
+    const rubros = []
+    const changedCodes = new Set()
+    let changedCount = 0
+    let skippedCount = 0
+
+    for (const localRubro of localRubros) {
+      const remoteRubro = existingByCode.get(localRubro.codigo)
+      const rubro = {
+        localId: localRubro.id,
+        codigo: localRubro.codigo,
+        nombre: localRubro.nombre,
+        descripcion: localRubro.descripcion ?? null,
+        imagenPrincipal: getPublicImagePath(localRubro.imagenPrincipal),
+        localIdPadre: localRubro.idPadre ?? null,
+        nombrePadre: localRubro.nombrePadre ?? null,
+        orden: localRubro.orden ?? 0,
+        activo: localRubro.activo ?? true,
+        fechaModificacion: normalizeDate(localRubro.fechaModificacion),
+      }
+      const hasChanges = isRubroChanged(rubro, remoteRubro)
+      rubro.imagenPrincipal = await ensureSyncedImage(localRubro.imagenPrincipal, token, hasChanges)
+      rubros.push(rubro)
+
+      if (!hasChanges) {
+        skippedCount += 1
+        continue
+      }
+
+      if (remoteRubro?.ImagenPrincipal && remoteRubro.ImagenPrincipal !== rubro.imagenPrincipal) {
+        await deleteSyncedImage(remoteRubro.ImagenPrincipal)
+      }
+
       await connection.execute(
         `
-          INSERT INTO rubros (IdRubro, NombreRubro, Descripcion, ImagenPrincipal, IdPadre, Orden)
-          VALUES (?, ?, ?, ?, NULL, ?)
+          INSERT INTO rubros (IdRubro, NombreRubro, Descripcion, ImagenPrincipal, IdPadre, Orden, Activo, FechaModificacion)
+          VALUES (?, ?, ?, ?, NULL, ?, ?, ?)
           ON DUPLICATE KEY UPDATE
             NombreRubro = VALUES(NombreRubro),
             Descripcion = VALUES(Descripcion),
             ImagenPrincipal = VALUES(ImagenPrincipal),
-            Orden = VALUES(Orden)
+            Orden = VALUES(Orden),
+            Activo = VALUES(Activo),
+            FechaModificacion = VALUES(FechaModificacion)
         `,
-        [rubro.codigo, rubro.nombre, rubro.descripcion, rubro.imagenPrincipal, rubro.orden],
+        [rubro.codigo, rubro.nombre, rubro.descripcion, rubro.imagenPrincipal, rubro.orden, rubro.activo ? 1 : 0, toMysqlDate(rubro.fechaModificacion)],
       )
+      changedCodes.add(rubro.codigo)
+      changedCount += 1
     }
 
     const [rows] = await connection.execute('SELECT Id, IdRubro FROM rubros')
@@ -161,6 +251,10 @@ async function syncDatabase(rubros) {
     for (const rubro of rubros) {
       const parentCode = rubro.localIdPadre ? localIdToCode.get(rubro.localIdPadre) : null
       const parentId = parentCode ? idByCode.get(parentCode) ?? null : null
+      if (!changedCodes.has(rubro.codigo)) {
+        continue
+      }
+
       await connection.execute(
         'UPDATE rubros SET IdPadre = ? WHERE IdRubro = ?',
         [parentId, rubro.codigo],
@@ -168,10 +262,71 @@ async function syncDatabase(rubros) {
     }
 
     await connection.commit()
+    return { rubros, changedCount, skippedCount }
   } catch (error) {
     await connection.rollback()
     throw error
   } finally {
     await connection.end()
   }
+}
+
+async function ensureRemoteColumn(connection, columnName, columnDefinition) {
+  const [rows] = await connection.execute(
+    `
+      SELECT COUNT(*) AS total
+      FROM information_schema.COLUMNS
+      WHERE TABLE_SCHEMA = DATABASE()
+        AND TABLE_NAME = 'rubros'
+        AND COLUMN_NAME = ?
+    `,
+    [columnName],
+  )
+  if (Number(rows[0]?.total ?? 0) > 0) {
+    return
+  }
+
+  await connection.execute(`ALTER TABLE rubros ADD COLUMN ${columnName} ${columnDefinition}`)
+}
+
+function isRubroChanged(rubro, remoteRubro) {
+  if (!remoteRubro) {
+    return true
+  }
+
+  const localDate = parseDate(rubro.fechaModificacion)
+  const remoteDate = parseDate(remoteRubro.FechaModificacion)
+  if (localDate && (!remoteDate || localDate > remoteDate)) {
+    return true
+  }
+
+  return remoteRubro.NombreRubro !== rubro.nombre
+    || normalizeNullable(remoteRubro.Descripcion) !== normalizeNullable(rubro.descripcion)
+    || normalizeNullable(remoteRubro.ImagenPrincipal) !== normalizeNullable(rubro.imagenPrincipal)
+    || Number(remoteRubro.Orden ?? 0) !== rubro.orden
+    || Boolean(remoteRubro.Activo ?? true) !== rubro.activo
+}
+
+function normalizeNullable(value) {
+  return value ?? null
+}
+
+function normalizeDate(value) {
+  const date = parseDate(value)
+  return date ? date.toISOString() : null
+}
+
+function parseDate(value) {
+  if (!value) {
+    return null
+  }
+
+  const date = value instanceof Date ? value : new Date(value)
+  return Number.isNaN(date.getTime()) ? null : date
+}
+
+function toMysqlDate(value) {
+  const date = parseDate(value) ?? new Date()
+  const pad = (number) => number.toString().padStart(2, '0')
+  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())} ${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`
 }

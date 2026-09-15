@@ -25,6 +25,8 @@ type RubroRow = RowDataPacket & {
   IdPadre: number | null
   NombrePadre: string | null
   Orden: number | null
+  Activo: number | boolean | null
+  FechaModificacion: Date | string | null
 }
 
 export async function getRubros() {
@@ -49,6 +51,7 @@ async function getDatabaseRubros() {
 
   const connection = await mysql.createConnection(databaseUrl)
   try {
+    await ensureRubrosColumns(connection)
     const [rows] = await connection.execute<RubroRow[]>(`
       SELECT
         r.Id,
@@ -58,9 +61,12 @@ async function getDatabaseRubros() {
         r.ImagenPrincipal,
         r.IdPadre,
         padre.NombreRubro AS NombrePadre,
-        r.Orden
+        r.Orden,
+        r.Activo,
+        r.FechaModificacion
       FROM rubros r
       LEFT JOIN rubros padre ON padre.Id = r.IdPadre
+      WHERE COALESCE(r.Activo, 1) = 1
       ORDER BY r.IdRubro
     `)
 
@@ -72,16 +78,49 @@ async function getDatabaseRubros() {
       idPadre: row.IdPadre,
       nombrePadre: row.NombrePadre,
       orden: row.Orden ?? 0,
+      activo: Boolean(row.Activo ?? true),
+      fechaModificacion: normalizeDate(row.FechaModificacion),
     })))
   } finally {
     await connection.end()
   }
 }
 
+async function ensureRubrosColumns(connection: mysql.Connection) {
+  await ensureRubrosColumn(connection, 'Activo', 'TINYINT(1) NOT NULL DEFAULT 1 AFTER `Orden`')
+  await ensureRubrosColumn(connection, 'FechaModificacion', 'DATETIME NULL AFTER `Activo`')
+}
+
+async function ensureRubrosColumn(connection: mysql.Connection, columnName: string, columnDefinition: string) {
+  const [rows] = await connection.execute<RowDataPacket[]>(
+    `
+      SELECT COUNT(*) AS total
+      FROM information_schema.COLUMNS
+      WHERE TABLE_SCHEMA = DATABASE()
+        AND TABLE_NAME = 'rubros'
+        AND COLUMN_NAME = ?
+    `,
+    [columnName],
+  )
+  if (Number(rows[0]?.total ?? 0) > 0) {
+    return
+  }
+
+  await connection.execute(`ALTER TABLE rubros ADD COLUMN ${columnName} ${columnDefinition}`)
+}
+
 function sortRubros(rubros: RubroPublico[]) {
   return rubros
-    .filter((rubro) => rubro.codigo && rubro.nombre)
+    .filter((rubro) => rubro.codigo && rubro.nombre && rubro.activo !== false)
     .sort((first, second) => compareCodes(first.codigo, second.codigo))
+}
+
+function normalizeDate(value: Date | string | null) {
+  if (!value) {
+    return null
+  }
+
+  return value instanceof Date ? value.toISOString() : value
 }
 
 export async function getRubroByCodigo(codigo: string) {

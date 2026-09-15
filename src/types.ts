@@ -6,6 +6,8 @@ export type RubroPublico = {
   idPadre?: number | null
   nombrePadre?: string | null
   orden?: number
+  activo?: boolean
+  fechaModificacion?: string | null
 }
 
 export type SeoMetadata = {

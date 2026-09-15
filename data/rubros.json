@@ -5,7 +5,9 @@
     "descripcion": null,
     "imagenPrincipal": "/uploads/rubros/20260915102809593.webp",
     "nombrePadre": null,
-    "orden": 0
+    "orden": 0,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "0001",
@@ -13,7 +15,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": "Cosmetica",
-    "orden": 0
+    "orden": 0,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "0002",
@@ -21,7 +25,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": "Cosmetica",
-    "orden": 0
+    "orden": 0,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "01",
@@ -29,7 +35,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
-    "orden": 0
+    "orden": 0,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "02",
@@ -37,7 +45,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
-    "orden": 0
+    "orden": 0,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "03",
@@ -45,7 +55,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
-    "orden": 0
+    "orden": 0,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "04",
@@ -53,7 +65,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
-    "orden": 2
+    "orden": 2,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "0401",
@@ -61,7 +75,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": "Acero Quirurgico",
-    "orden": 1
+    "orden": 1,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "0402",
@@ -69,7 +85,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": "Acero Quirurgico",
-    "orden": 2
+    "orden": 2,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "0403",
@@ -77,7 +95,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": "Acero Quirurgico",
-    "orden": 3
+    "orden": 3,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "0404",
@@ -85,7 +105,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": "Acero Quirurgico",
-    "orden": 4
+    "orden": 4,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "0407",
@@ -93,7 +115,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": "Acero Quirurgico",
-    "orden": 7
+    "orden": 7,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "0408",
@@ -101,7 +125,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": "Acero Quirurgico",
-    "orden": 8
+    "orden": 8,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "10",
@@ -109,7 +135,9 @@
     "descripcion": null,
     "imagenPrincipal": "/uploads/rubros/20260915120217364.webp",
     "nombrePadre": null,
-    "orden": 0
+    "orden": 0,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "1001",
@@ -117,7 +145,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": "Plata 900 / 925",
-    "orden": 1
+    "orden": 1,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "1002",
@@ -125,7 +155,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": "Plata 900 / 925",
-    "orden": 2
+    "orden": 2,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "1003",
@@ -133,7 +165,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": "Plata 900 / 925",
-    "orden": 3
+    "orden": 3,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "1004",
@@ -141,7 +175,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": "Plata 900 / 925",
-    "orden": 4
+    "orden": 4,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "1005",
@@ -149,7 +185,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": "Plata 900 / 925",
-    "orden": 5
+    "orden": 5,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "1006",
@@ -157,7 +195,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": "Plata 900 / 925",
-    "orden": 6
+    "orden": 6,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "1007",
@@ -165,7 +205,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": "Plata 900 / 925",
-    "orden": 7
+    "orden": 7,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "1009",
@@ -173,7 +215,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": "Plata 900 / 925",
-    "orden": 9
+    "orden": 9,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "16",
@@ -181,7 +225,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
-    "orden": 0
+    "orden": 0,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "26",
@@ -189,7 +235,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
-    "orden": 0
+    "orden": 0,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "27",
@@ -197,7 +245,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
-    "orden": 0
+    "orden": 0,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "28",
@@ -205,7 +255,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
-    "orden": 0
+    "orden": 0,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "29",
@@ -213,7 +265,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
-    "orden": 0
+    "orden": 0,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "30",
@@ -221,7 +275,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
-    "orden": 0
+    "orden": 0,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "31",
@@ -229,7 +285,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
-    "orden": 0
+    "orden": 0,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "32",
@@ -237,7 +295,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
-    "orden": 0
+    "orden": 0,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "3201",
@@ -245,7 +305,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": "Laminado en plata 1000",
-    "orden": 1
+    "orden": 1,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "3203",
@@ -253,7 +315,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": "Laminado en plata 1000",
-    "orden": 3
+    "orden": 3,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "3204",
@@ -261,7 +325,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": "Laminado en plata 1000",
-    "orden": 4
+    "orden": 4,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "3207",
@@ -269,7 +335,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": "Laminado en plata 1000",
-    "orden": 7
+    "orden": 7,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "3208",
@@ -277,7 +345,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": "Laminado en plata 1000",
-    "orden": 8
+    "orden": 8,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "3209",
@@ -285,7 +355,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": "Laminado en plata 1000",
-    "orden": 9
+    "orden": 9,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "40",
@@ -293,7 +365,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
-    "orden": 0
+    "orden": 0,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "50",
@@ -301,7 +375,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
-    "orden": 0
+    "orden": 0,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "60",
@@ -309,7 +385,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
-    "orden": 0
+    "orden": 0,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "80",
@@ -317,7 +395,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
-    "orden": 0
+    "orden": 0,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "8001",
@@ -325,7 +405,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": "Marroquineria",
-    "orden": 1
+    "orden": 1,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "8002",
@@ -333,7 +415,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": "Marroquineria",
-    "orden": 2
+    "orden": 2,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "90",
@@ -341,7 +425,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
-    "orden": 0
+    "orden": 0,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "91",
@@ -349,7 +435,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
-    "orden": 0
+    "orden": 0,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "93",
@@ -357,7 +445,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
-    "orden": 0
+    "orden": 0,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "95",
@@ -365,7 +455,9 @@
     "descripcion": "Hola",
     "imagenPrincipal": "/uploads/rubros/20260915102753609.webp",
     "nombrePadre": null,
-    "orden": 0
+    "orden": 0,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "98",
@@ -373,7 +465,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
-    "orden": 0
+    "orden": 0,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "99",
@@ -381,6 +475,8 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
-    "orden": 0
+    "orden": 0,
+    "activo": true,
+    "fechaModificacion": null
   }
 ]

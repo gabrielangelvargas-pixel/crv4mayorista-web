@@ -6,6 +6,8 @@ CREATE TABLE IF NOT EXISTS rubros (
   ImagenPrincipal VARCHAR(255) NULL,
   IdPadre INT NULL,
   Orden INT NOT NULL DEFAULT 0,
+  Activo TINYINT(1) NOT NULL DEFAULT 1,
+  FechaModificacion DATETIME NULL,
   PRIMARY KEY (Id),
   UNIQUE KEY uq_rubros_IdRubro (IdRubro),
   KEY fk_rubros_padre (IdPadre),
