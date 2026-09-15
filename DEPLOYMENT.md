@@ -20,11 +20,13 @@ Configura estas variables en Hostinger durante el despliegue:
 ```env
 PORT=3000
 SITE_URL=https://crv4mayorista.com.ar
+DATABASE_URL=mysql://u605057087_crv4web:REEMPLAZAR_PASSWORD@localhost:3306/u605057087_crv4web
 ```
 
 Notas:
 
 - No subir `.env` a GitHub. Usar `.env.example` como referencia.
+- En `DATABASE_URL`, reemplazar `REEMPLAZAR_PASSWORD` por la clave de la base creada en Hostinger.
 - El renderizado es del lado servidor para que WhatsApp, Facebook y otras redes lean los metadatos.
 - Las imagenes publicas de rubros van en `public/uploads/rubros`.
 - Cuando hagamos la sincronizacion desde la API local, el proceso deberia actualizar `data/rubros.json` y copiar las imagenes procesadas.
