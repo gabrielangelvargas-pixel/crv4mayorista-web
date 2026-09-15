@@ -109,6 +109,14 @@ export function renderRubroList(rubros) {
     ${renderRubroGrid(rubros)}
   `;
 }
+export function renderRealDataLoadFailed() {
+    return `
+    <section class="empty data-load-error">
+      <h1>La carga real fallo</h1>
+      <p>No se pudieron leer los rubros desde la base de datos.</p>
+    </section>
+  `;
+}
 export function renderRubroDetail(rubro, imageUrl) {
     return `
     <article class="rubro-detail">

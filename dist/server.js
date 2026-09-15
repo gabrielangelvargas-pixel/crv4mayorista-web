@@ -4,8 +4,8 @@ import express from 'express';
 import helmet from 'helmet';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { getRubroByCodigo, getRubroPath, getRubros } from './data/rubros.js';
-import { getDescription, renderHome, renderLayout, renderRubroDetail, renderRubroList } from './render.js';
+import { getRubroByCodigo, getRubroPath, getRubros, RubrosDatabaseError } from './data/rubros.js';
+import { getDescription, renderHome, renderLayout, renderRealDataLoadFailed, renderRubroDetail, renderRubroList } from './render.js';
 import { slugify, toAbsoluteUrl } from './text.js';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dirname, '..');
@@ -30,6 +30,14 @@ app.get('/', async (_request, response, next) => {
         }, renderHome(rubros)));
     }
     catch (error) {
+        if (error instanceof RubrosDatabaseError) {
+            response.send(renderLayout({
+                title: 'CRV4 Mayorista',
+                description: 'No se pudieron cargar los datos reales de rubros.',
+                url: `${siteUrl}/`,
+            }, renderRealDataLoadFailed()));
+            return;
+        }
         next(error);
     }
 });
@@ -43,6 +51,14 @@ app.get('/rubros', async (_request, response, next) => {
         }, renderRubroList(rubros)));
     }
     catch (error) {
+        if (error instanceof RubrosDatabaseError) {
+            response.send(renderLayout({
+                title: 'Rubros | CRV4 Mayorista',
+                description: 'No se pudieron cargar los datos reales de rubros.',
+                url: `${siteUrl}/rubros`,
+            }, renderRealDataLoadFailed()));
+            return;
+        }
         next(error);
     }
 });
@@ -73,6 +89,14 @@ const renderRubroRoute = async (request, response, next) => {
         }, renderRubroDetail(rubro, imageUrl)));
     }
     catch (error) {
+        if (error instanceof RubrosDatabaseError) {
+            response.send(renderLayout({
+                title: 'CRV4 Mayorista',
+                description: 'No se pudieron cargar los datos reales de rubros.',
+                url: `${siteUrl}${request.path}`,
+            }, renderRealDataLoadFailed()));
+            return;
+        }
         next(error);
     }
 };

@@ -4,10 +4,21 @@ import mysql from 'mysql2/promise';
 import { compareCodes, slugify } from '../text.js';
 const dataPath = path.join(process.cwd(), 'data', 'rubros.json');
 const databaseUrl = process.env.DATABASE_URL;
+export class RubrosDatabaseError extends Error {
+    constructor(cause) {
+        super('La carga real de rubros fallo.');
+        this.name = 'RubrosDatabaseError';
+        this.cause = cause;
+    }
+}
 export async function getRubros() {
-    const databaseRubros = await getDatabaseRubros();
-    if (databaseRubros.length > 0) {
-        return databaseRubros;
+    if (databaseUrl) {
+        try {
+            return await getDatabaseRubros();
+        }
+        catch (error) {
+            throw new RubrosDatabaseError(error);
+        }
     }
     const raw = await readFile(dataPath, 'utf8');
     const rubros = JSON.parse(raw);
