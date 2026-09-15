@@ -21,6 +21,9 @@ Configura estas variables en Hostinger durante el despliegue:
 PORT=3000
 SITE_URL=https://crv4mayorista.com.ar
 DATABASE_URL=mysql://u605057087_crv4web:REEMPLAZAR_PASSWORD@localhost:3306/u605057087_crv4web
+LOCAL_API_URL=https://192.168.100.128:5443
+LOCAL_API_USER=REEMPLAZAR_USUARIO
+LOCAL_API_PASSWORD=REEMPLAZAR_PASSWORD
 ```
 
 Notas:
@@ -30,6 +33,29 @@ Notas:
 - El renderizado es del lado servidor para que WhatsApp, Facebook y otras redes lean los metadatos.
 - Las imagenes publicas de rubros van en `public/uploads/rubros`.
 - Cuando hagamos la sincronizacion desde la API local, el proceso deberia actualizar `data/rubros.json` y copiar las imagenes procesadas.
+
+## Sincronizacion de rubros
+
+Desde la PC local, configurar `.env` con:
+
+```env
+DATABASE_URL=mysql://u605057087_crv4web:TU_PASSWORD_HOSTINGER@HOST_MYSQL:3306/u605057087_crv4web
+LOCAL_API_URL=https://192.168.100.128:5443
+LOCAL_API_USER=TU_USUARIO_LOCAL
+LOCAL_API_PASSWORD=TU_PASSWORD_LOCAL
+```
+
+Luego ejecutar:
+
+```bash
+npm run sync:rubros
+npm run build:local
+git add data/rubros.json public/uploads/rubros dist package-lock.json package.json
+git commit -m "Sync public rubros"
+git push
+```
+
+El script actualiza la tabla `rubros` de Hostinger y descarga las imagenes publicas en `public/uploads/rubros`.
 
 ## Flujo GitHub + Hostinger
 
