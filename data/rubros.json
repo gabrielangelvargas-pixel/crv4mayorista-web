@@ -1,20 +1,20 @@
 [
   {
     "codigo": "00",
-    "nombre": "Cosmetica",
+    "nombre": "Cosmeticas",
     "descripcion": null,
     "imagenPrincipal": "/uploads/rubros/20260915102809593.webp",
     "nombrePadre": null,
     "orden": 0,
     "activo": true,
-    "fechaModificacion": null
+    "fechaModificacion": "2026-09-15T19:10:34.000Z"
   },
   {
     "codigo": "0001",
     "nombre": "Maquillaje",
     "descripcion": null,
     "imagenPrincipal": null,
-    "nombrePadre": "Cosmetica",
+    "nombrePadre": "Cosmeticas",
     "orden": 0,
     "activo": true,
     "fechaModificacion": null
@@ -24,7 +24,7 @@
     "nombre": "Accesorios de cosmetica",
     "descripcion": null,
     "imagenPrincipal": null,
-    "nombrePadre": "Cosmetica",
+    "nombrePadre": "Cosmeticas",
     "orden": 0,
     "activo": true,
     "fechaModificacion": null
@@ -32,16 +32,6 @@
   {
     "codigo": "01",
     "nombre": "Packaging",
-    "descripcion": null,
-    "imagenPrincipal": null,
-    "nombrePadre": null,
-    "orden": 0,
-    "activo": true,
-    "fechaModificacion": null
-  },
-  {
-    "codigo": "02",
-    "nombre": "DESCUENTO",
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
