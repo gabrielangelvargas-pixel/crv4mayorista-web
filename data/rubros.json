@@ -65,9 +65,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": "Acero Quirurgico",
-    "orden": 1,
+    "orden": 0,
     "activo": true,
-    "fechaModificacion": null
+    "fechaModificacion": "2026-09-16T13:11:11.000Z"
   },
   {
     "codigo": "0402",
@@ -118,6 +118,16 @@
     "orden": 8,
     "activo": true,
     "fechaModificacion": null
+  },
+  {
+    "codigo": "0409",
+    "nombre": "Otros",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": "Acero Quirurgico",
+    "orden": 9,
+    "activo": true,
+    "fechaModificacion": "2026-09-16T13:08:49.000Z"
   },
   {
     "codigo": "10",
@@ -232,16 +242,6 @@
   {
     "codigo": "27",
     "nombre": "Rosario AQ",
-    "descripcion": null,
-    "imagenPrincipal": null,
-    "nombrePadre": null,
-    "orden": 0,
-    "activo": true,
-    "fechaModificacion": null
-  },
-  {
-    "codigo": "28",
-    "nombre": "Aro AQ",
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
