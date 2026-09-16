@@ -261,8 +261,7 @@ h2 {
 }
 
 .commercial-strip span,
-.rubro-card p,
-.detail-body p {
+.rubro-card p {
   color: var(--muted);
   line-height: 1.45;
 }
@@ -359,10 +358,6 @@ h2 {
   max-width: 980px;
 }
 
-.child-rubros-title {
-  margin-top: 34px;
-}
-
 .cover {
   width: 100%;
   aspect-ratio: 1.91 / 1;
@@ -372,9 +367,31 @@ h2 {
   border: 1px solid var(--border);
 }
 
-.detail-body {
+.category-section {
   display: grid;
-  gap: 10px;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.category-section h2 {
+  color: var(--accent-strong);
+  font-size: clamp(23px, 4vw, 32px);
+}
+
+.category-slider {
+  display: grid;
+  grid-auto-columns: minmax(230px, 300px);
+  grid-auto-flow: column;
+  gap: 12px;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: inline proximity;
+  padding: 2px 2px 12px;
+}
+
+.category-slider .rubro-card {
+  min-height: 248px;
+  scroll-snap-align: start;
 }
 
 .empty {

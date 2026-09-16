@@ -131,20 +131,14 @@ export function renderRubroDetail(rubro: RubroPublico, children: RubroPublico[] 
   return `
     <article class="rubro-detail">
       ${imageUrl ? `<img class="cover" src="${escapeHtml(imageUrl)}" alt="">` : ''}
-      <div class="detail-body">
-        <span class="code">${escapeHtml(rubro.codigo)}</span>
-        <h1>${escapeHtml(rubro.nombre)}</h1>
-        <p>${escapeHtml(getDescription(rubro))}</p>
-      </div>
     </article>
     ${sortedChildren.length > 0 ? `
-      <section class="section-title child-rubros-title">
-        <div>
-          <p>Subrubros</p>
-          <h2>${escapeHtml(rubro.nombre)}</h2>
+      <section class="category-section">
+        <h2>Categoria</h2>
+        <div class="category-slider" aria-label="Categorias de ${escapeHtml(rubro.nombre)}">
+          ${sortedChildren.map(renderRubroCard).join('')}
         </div>
       </section>
-      ${renderRubroGrid(sortedChildren)}
     ` : ''}
   `
 }
