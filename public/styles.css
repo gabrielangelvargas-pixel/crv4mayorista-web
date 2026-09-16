@@ -309,7 +309,38 @@ h2 {
   width: 100%;
   aspect-ratio: 1.91 / 1;
   object-fit: cover;
-  background: #dcebe8;
+}
+
+.image-placeholder {
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+  background:
+    linear-gradient(135deg, rgba(21, 82, 99, 0.08), rgba(213, 138, 24, 0.08)),
+    #dcebe8;
+}
+
+.image-placeholder::before {
+  content: "";
+  width: 42px;
+  height: 42px;
+  border: 2px solid rgba(21, 82, 99, 0.35);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, transparent 58%, rgba(21, 82, 99, 0.28) 0),
+    linear-gradient(45deg, transparent 62%, rgba(213, 138, 24, 0.34) 0);
+}
+
+.image-placeholder::after {
+  content: "Sin imagen";
+  position: absolute;
+  bottom: 10px;
+  left: 12px;
+  color: var(--accent-strong);
+  font-size: 12px;
+  font-weight: 900;
 }
 
 .rubro-card div {

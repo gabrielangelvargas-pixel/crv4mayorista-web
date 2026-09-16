@@ -155,7 +155,7 @@ function renderRubroCard(rubro: RubroPublico) {
   const image = rubro.imagenPrincipal?.trim()
   return `
     <a class="rubro-card" href="${getRubroPath(rubro)}">
-      ${image ? `<img src="${escapeHtml(image)}" alt="">` : '<div class="image-placeholder"></div>'}
+      ${image ? `<img src="${escapeHtml(image)}" alt="">` : '<div class="image-placeholder" aria-label="Sin imagen"></div>'}
       <div>
         <span>${escapeHtml(rubro.codigo)}</span>
         <strong>${escapeHtml(rubro.nombre)}</strong>
@@ -169,7 +169,7 @@ function renderCategoryCard(rubro: RubroPublico) {
   const image = rubro.imagenPrincipal?.trim()
   return `
     <a class="category-card" href="${getRubroPath(rubro)}">
-      ${image ? `<img src="${escapeHtml(image)}" alt="">` : '<div class="image-placeholder"></div>'}
+      ${image ? `<img src="${escapeHtml(image)}" alt="">` : '<div class="image-placeholder" aria-label="Sin imagen"></div>'}
       <strong>${escapeHtml(rubro.nombre)}</strong>
     </a>
   `
