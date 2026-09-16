@@ -2,32 +2,32 @@
   {
     "codigo": "00",
     "nombre": "Cosmeticas",
-    "descripcion": null,
+    "descripcion": "Maquillajes, Accesorios, esmaltes",
     "imagenPrincipal": "/uploads/rubros/20260916095550761.webp",
     "nombrePadre": null,
     "orden": 0,
     "activo": true,
-    "fechaModificacion": "2026-09-16T13:58:21.000Z"
+    "fechaModificacion": "2026-09-16T14:10:22.000Z"
   },
   {
     "codigo": "0001",
     "nombre": "Maquillaje",
-    "descripcion": null,
+    "descripcion": "Maquillajes para verte mas reluciente",
     "imagenPrincipal": null,
     "nombrePadre": "Cosmeticas",
     "orden": 0,
     "activo": true,
-    "fechaModificacion": null
+    "fechaModificacion": "2026-09-16T14:10:46.000Z"
   },
   {
     "codigo": "0002",
     "nombre": "Accesorios de cosmetica",
-    "descripcion": null,
+    "descripcion": "Accesorios para la cosmetica",
     "imagenPrincipal": null,
     "nombrePadre": "Cosmeticas",
     "orden": 0,
     "activo": true,
-    "fechaModificacion": null
+    "fechaModificacion": "2026-09-16T14:11:10.000Z"
   },
   {
     "codigo": "04",
