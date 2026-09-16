@@ -63,11 +63,11 @@
     "codigo": "1001",
     "nombre": "Aros plata",
     "descripcion": null,
-    "imagenPrincipal": null,
+    "imagenPrincipal": "/uploads/rubros/20260916151645868.webp",
     "nombrePadre": "Plata 900 / 925",
     "orden": 1,
     "activo": true,
-    "fechaModificacion": null
+    "fechaModificacion": "2026-09-16T18:16:55.000Z"
   },
   {
     "codigo": "32",
@@ -133,11 +133,11 @@
     "codigo": "1002",
     "nombre": "Abridores plata",
     "descripcion": null,
-    "imagenPrincipal": null,
+    "imagenPrincipal": "/uploads/rubros/20260916151707049.webp",
     "nombrePadre": "Plata 900 / 925",
     "orden": 2,
     "activo": true,
-    "fechaModificacion": null
+    "fechaModificacion": "2026-09-16T18:17:10.000Z"
   },
   {
     "codigo": "4002",
@@ -183,11 +183,11 @@
     "codigo": "1003",
     "nombre": "Dijes plata",
     "descripcion": null,
-    "imagenPrincipal": null,
+    "imagenPrincipal": "/uploads/rubros/20260916151718246.webp",
     "nombrePadre": "Plata 900 / 925",
     "orden": 3,
     "activo": true,
-    "fechaModificacion": null
+    "fechaModificacion": "2026-09-16T18:17:20.000Z"
   },
   {
     "codigo": "3203",
