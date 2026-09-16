@@ -80,6 +80,16 @@
     "fechaModificacion": null
   },
   {
+    "codigo": "040401",
+    "nombre": "Rosarios acero",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": "Cadenas acero",
+    "orden": 0,
+    "activo": true,
+    "fechaModificacion": "2026-09-16T14:28:41.000Z"
+  },
+  {
     "codigo": "0407",
     "nombre": "Pulseras acero",
     "descripcion": null,
@@ -88,6 +98,16 @@
     "orden": 7,
     "activo": true,
     "fechaModificacion": null
+  },
+  {
+    "codigo": "040701",
+    "nombre": "Esclavas acero",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": "Pulseras acero",
+    "orden": 0,
+    "activo": true,
+    "fechaModificacion": "2026-09-16T14:19:06.000Z"
   },
   {
     "codigo": "0408",
@@ -210,38 +230,18 @@
     "fechaModificacion": "2026-09-16T13:54:51.000Z"
   },
   {
+    "codigo": "1011",
+    "nombre": "Piercing",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": "Plata 900 / 925",
+    "orden": 11,
+    "activo": true,
+    "fechaModificacion": "2026-09-16T14:31:05.000Z"
+  },
+  {
     "codigo": "16",
     "nombre": "Cadena Ench. Oro 18k.",
-    "descripcion": null,
-    "imagenPrincipal": null,
-    "nombrePadre": null,
-    "orden": 0,
-    "activo": true,
-    "fechaModificacion": null
-  },
-  {
-    "codigo": "26",
-    "nombre": "Esclava AQ",
-    "descripcion": null,
-    "imagenPrincipal": null,
-    "nombrePadre": null,
-    "orden": 0,
-    "activo": true,
-    "fechaModificacion": null
-  },
-  {
-    "codigo": "27",
-    "nombre": "Rosario AQ",
-    "descripcion": null,
-    "imagenPrincipal": null,
-    "nombrePadre": null,
-    "orden": 0,
-    "activo": true,
-    "fechaModificacion": null
-  },
-  {
-    "codigo": "29",
-    "nombre": "Piercing",
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
