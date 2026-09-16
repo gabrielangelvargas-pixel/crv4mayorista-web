@@ -12,7 +12,8 @@
     "build:local": "tsc",
     "start": "node server.js",
     "check": "tsc --noEmit",
-    "sync:rubros": "node scripts/sync-rubros-from-local.mjs"
+    "sync:rubros": "node scripts/sync-rubros-from-local.mjs",
+    "sync:rubros:web": "node scripts/sync-rubros-and-push.mjs"
   },
   "dependencies": {
     "compression": "^1.8.1",
