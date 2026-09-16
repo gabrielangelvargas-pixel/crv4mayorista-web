@@ -435,9 +435,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
-    "orden": 0,
+    "orden": 10,
     "activo": true,
-    "fechaModificacion": null
+    "fechaModificacion": "2026-09-16T17:38:41.000Z"
   },
   {
     "codigo": "60",
@@ -445,9 +445,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
-    "orden": 0,
+    "orden": 11,
     "activo": true,
-    "fechaModificacion": null
+    "fechaModificacion": "2026-09-16T17:38:54.000Z"
   },
   {
     "codigo": "80",
@@ -455,9 +455,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
-    "orden": 0,
+    "orden": 5,
     "activo": true,
-    "fechaModificacion": null
+    "fechaModificacion": "2026-09-16T17:39:10.000Z"
   },
   {
     "codigo": "8001",
@@ -485,9 +485,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
-    "orden": 0,
+    "orden": 12,
     "activo": true,
-    "fechaModificacion": "2026-09-16T13:52:54.000Z"
+    "fechaModificacion": "2026-09-16T17:39:36.000Z"
   },
   {
     "codigo": "90",
@@ -495,9 +495,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
-    "orden": 0,
+    "orden": 13,
     "activo": true,
-    "fechaModificacion": null
+    "fechaModificacion": "2026-09-16T17:39:58.000Z"
   },
   {
     "codigo": "91",
