@@ -136,7 +136,7 @@ export function renderRubroDetail(rubro: RubroPublico, children: RubroPublico[] 
       <section class="category-section">
         <h2>Categoria</h2>
         <div class="category-slider" aria-label="Categorias de ${escapeHtml(rubro.nombre)}">
-          ${sortedChildren.map(renderRubroCard).join('')}
+          ${sortedChildren.map(renderCategoryCard).join('')}
         </div>
       </section>
     ` : ''}
@@ -161,6 +161,16 @@ function renderRubroCard(rubro: RubroPublico) {
         <strong>${escapeHtml(rubro.nombre)}</strong>
         <p>${escapeHtml(getDescription(rubro))}</p>
       </div>
+    </a>
+  `
+}
+
+function renderCategoryCard(rubro: RubroPublico) {
+  const image = rubro.imagenPrincipal?.trim()
+  return `
+    <a class="category-card" href="${getRubroPath(rubro)}">
+      ${image ? `<img src="${escapeHtml(image)}" alt="">` : '<div class="image-placeholder"></div>'}
+      <strong>${escapeHtml(rubro.nombre)}</strong>
     </a>
   `
 }

@@ -380,7 +380,7 @@ h2 {
 
 .category-slider {
   display: grid;
-  grid-auto-columns: minmax(230px, 300px);
+  grid-auto-columns: minmax(190px, 260px);
   grid-auto-flow: column;
   gap: 12px;
   overflow-x: auto;
@@ -389,9 +389,32 @@ h2 {
   padding: 2px 2px 12px;
 }
 
-.category-slider .rubro-card {
-  min-height: 248px;
+.category-card {
+  display: grid;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--panel);
+  text-decoration: none;
   scroll-snap-align: start;
+}
+
+.category-card img,
+.category-card .image-placeholder {
+  width: 100%;
+  aspect-ratio: 1.91 / 1;
+  object-fit: cover;
+  background: #dcebe8;
+}
+
+.category-card strong {
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  color: var(--text);
+  font-size: clamp(16px, 4.2vw, 18px);
+  line-height: 1.15;
 }
 
 .empty {
