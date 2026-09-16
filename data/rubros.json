@@ -5,9 +5,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
-    "orden": 2,
+    "orden": 1,
     "activo": true,
-    "fechaModificacion": null
+    "fechaModificacion": "2026-09-16T15:51:30.000Z"
   },
   {
     "codigo": "0401",
@@ -105,9 +105,9 @@
     "descripcion": null,
     "imagenPrincipal": "/uploads/rubros/20260915120217364.webp",
     "nombrePadre": null,
-    "orden": 0,
+    "orden": 2,
     "activo": true,
-    "fechaModificacion": null
+    "fechaModificacion": "2026-09-16T15:51:44.000Z"
   },
   {
     "codigo": "1001",
@@ -211,13 +211,23 @@
   },
   {
     "codigo": "16",
-    "nombre": "Cadena Ench. Oro 18k.",
+    "nombre": "Enchapado en Oro",
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
+    "orden": 3,
+    "activo": true,
+    "fechaModificacion": "2026-09-16T15:51:18.000Z"
+  },
+  {
+    "codigo": "1601",
+    "nombre": "Cadena enchapara Oro",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": "Enchapado en Oro",
     "orden": 0,
     "activo": true,
-    "fechaModificacion": null
+    "fechaModificacion": "2026-09-16T15:52:18.000Z"
   },
   {
     "codigo": "30",
