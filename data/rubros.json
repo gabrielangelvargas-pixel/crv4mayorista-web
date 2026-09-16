@@ -5,9 +5,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
-    "orden": 1,
+    "orden": 3,
     "activo": true,
-    "fechaModificacion": "2026-09-16T15:51:30.000Z"
+    "fechaModificacion": "2026-09-16T17:36:28.000Z"
   },
   {
     "codigo": "0401",
@@ -235,9 +235,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
-    "orden": 0,
+    "orden": 9,
     "activo": true,
-    "fechaModificacion": null
+    "fechaModificacion": "2026-09-16T17:34:38.000Z"
   },
   {
     "codigo": "31",
@@ -245,9 +245,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
-    "orden": 0,
+    "orden": 9,
     "activo": true,
-    "fechaModificacion": null
+    "fechaModificacion": "2026-09-16T17:35:25.000Z"
   },
   {
     "codigo": "32",
@@ -255,9 +255,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
-    "orden": 0,
+    "orden": 1,
     "activo": true,
-    "fechaModificacion": null
+    "fechaModificacion": "2026-09-16T17:36:13.000Z"
   },
   {
     "codigo": "3201",
