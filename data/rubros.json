@@ -1,15 +1,5 @@
 [
   {
-    "codigo": "04",
-    "nombre": "Acero Quirurgico",
-    "descripcion": null,
-    "imagenPrincipal": null,
-    "nombrePadre": null,
-    "orden": 3,
-    "activo": true,
-    "fechaModificacion": "2026-09-16T17:36:28.000Z"
-  },
-  {
     "codigo": "0401",
     "nombre": "Aros acero",
     "descripcion": null,
@@ -18,36 +8,6 @@
     "orden": 0,
     "activo": true,
     "fechaModificacion": "2026-09-16T13:11:11.000Z"
-  },
-  {
-    "codigo": "0402",
-    "nombre": "Abridores acero",
-    "descripcion": null,
-    "imagenPrincipal": null,
-    "nombrePadre": "Acero Quirurgico",
-    "orden": 2,
-    "activo": true,
-    "fechaModificacion": null
-  },
-  {
-    "codigo": "0403",
-    "nombre": "Dijes acero",
-    "descripcion": null,
-    "imagenPrincipal": null,
-    "nombrePadre": "Acero Quirurgico",
-    "orden": 3,
-    "activo": true,
-    "fechaModificacion": null
-  },
-  {
-    "codigo": "0404",
-    "nombre": "Cadenas acero",
-    "descripcion": null,
-    "imagenPrincipal": null,
-    "nombrePadre": "Acero Quirurgico",
-    "orden": 4,
-    "activo": true,
-    "fechaModificacion": null
   },
   {
     "codigo": "040401",
@@ -60,16 +20,6 @@
     "fechaModificacion": "2026-09-16T14:28:41.000Z"
   },
   {
-    "codigo": "0407",
-    "nombre": "Pulseras acero",
-    "descripcion": null,
-    "imagenPrincipal": null,
-    "nombrePadre": "Acero Quirurgico",
-    "orden": 7,
-    "activo": true,
-    "fechaModificacion": null
-  },
-  {
     "codigo": "040701",
     "nombre": "Esclavas acero",
     "descripcion": null,
@@ -80,146 +30,6 @@
     "fechaModificacion": "2026-09-16T14:19:06.000Z"
   },
   {
-    "codigo": "0408",
-    "nombre": "Anillos acero",
-    "descripcion": null,
-    "imagenPrincipal": null,
-    "nombrePadre": "Acero Quirurgico",
-    "orden": 8,
-    "activo": true,
-    "fechaModificacion": null
-  },
-  {
-    "codigo": "0409",
-    "nombre": "Otros",
-    "descripcion": null,
-    "imagenPrincipal": null,
-    "nombrePadre": "Acero Quirurgico",
-    "orden": 9,
-    "activo": true,
-    "fechaModificacion": "2026-09-16T13:08:49.000Z"
-  },
-  {
-    "codigo": "10",
-    "nombre": "Plata 900 / 925",
-    "descripcion": null,
-    "imagenPrincipal": "/uploads/rubros/20260915120217364.webp",
-    "nombrePadre": null,
-    "orden": 2,
-    "activo": true,
-    "fechaModificacion": "2026-09-16T15:51:44.000Z"
-  },
-  {
-    "codigo": "1001",
-    "nombre": "Aros plata",
-    "descripcion": null,
-    "imagenPrincipal": null,
-    "nombrePadre": "Plata 900 / 925",
-    "orden": 1,
-    "activo": true,
-    "fechaModificacion": null
-  },
-  {
-    "codigo": "1002",
-    "nombre": "Abridores plata",
-    "descripcion": null,
-    "imagenPrincipal": null,
-    "nombrePadre": "Plata 900 / 925",
-    "orden": 2,
-    "activo": true,
-    "fechaModificacion": null
-  },
-  {
-    "codigo": "1003",
-    "nombre": "Dijes plata",
-    "descripcion": null,
-    "imagenPrincipal": null,
-    "nombrePadre": "Plata 900 / 925",
-    "orden": 3,
-    "activo": true,
-    "fechaModificacion": null
-  },
-  {
-    "codigo": "1004",
-    "nombre": "Cadena plata",
-    "descripcion": null,
-    "imagenPrincipal": null,
-    "nombrePadre": "Plata 900 / 925",
-    "orden": 4,
-    "activo": true,
-    "fechaModificacion": null
-  },
-  {
-    "codigo": "1005",
-    "nombre": "Cadena plata 900",
-    "descripcion": null,
-    "imagenPrincipal": null,
-    "nombrePadre": "Plata 900 / 925",
-    "orden": 5,
-    "activo": true,
-    "fechaModificacion": null
-  },
-  {
-    "codigo": "1006",
-    "nombre": "Conjunto plata",
-    "descripcion": null,
-    "imagenPrincipal": null,
-    "nombrePadre": "Plata 900 / 925",
-    "orden": 6,
-    "activo": true,
-    "fechaModificacion": null
-  },
-  {
-    "codigo": "1007",
-    "nombre": "Pulsera plata",
-    "descripcion": null,
-    "imagenPrincipal": null,
-    "nombrePadre": "Plata 900 / 925",
-    "orden": 7,
-    "activo": true,
-    "fechaModificacion": null
-  },
-  {
-    "codigo": "1009",
-    "nombre": "Anillo plata",
-    "descripcion": null,
-    "imagenPrincipal": null,
-    "nombrePadre": "Plata 900 / 925",
-    "orden": 9,
-    "activo": true,
-    "fechaModificacion": null
-  },
-  {
-    "codigo": "1010",
-    "nombre": "Fornitura",
-    "descripcion": null,
-    "imagenPrincipal": null,
-    "nombrePadre": "Plata 900 / 925",
-    "orden": 10,
-    "activo": true,
-    "fechaModificacion": "2026-09-16T13:54:51.000Z"
-  },
-  {
-    "codigo": "1011",
-    "nombre": "Piercing",
-    "descripcion": null,
-    "imagenPrincipal": null,
-    "nombrePadre": "Plata 900 / 925",
-    "orden": 11,
-    "activo": true,
-    "fechaModificacion": "2026-09-16T14:31:05.000Z"
-  },
-  {
-    "codigo": "16",
-    "nombre": "Enchapado en Oro",
-    "descripcion": null,
-    "imagenPrincipal": null,
-    "nombrePadre": null,
-    "orden": 3,
-    "activo": true,
-    "fechaModificacion": "2026-09-16T15:51:18.000Z"
-  },
-  {
     "codigo": "1601",
     "nombre": "Cadena enchapara Oro",
     "descripcion": null,
@@ -228,106 +38,6 @@
     "orden": 0,
     "activo": true,
     "fechaModificacion": "2026-09-16T15:52:18.000Z"
-  },
-  {
-    "codigo": "30",
-    "nombre": "Fantasia",
-    "descripcion": null,
-    "imagenPrincipal": null,
-    "nombrePadre": null,
-    "orden": 9,
-    "activo": true,
-    "fechaModificacion": "2026-09-16T17:34:38.000Z"
-  },
-  {
-    "codigo": "31",
-    "nombre": "jugueteria",
-    "descripcion": null,
-    "imagenPrincipal": null,
-    "nombrePadre": null,
-    "orden": 9,
-    "activo": true,
-    "fechaModificacion": "2026-09-16T17:35:25.000Z"
-  },
-  {
-    "codigo": "32",
-    "nombre": "Laminado en plata 1000",
-    "descripcion": null,
-    "imagenPrincipal": null,
-    "nombrePadre": null,
-    "orden": 1,
-    "activo": true,
-    "fechaModificacion": "2026-09-16T17:36:13.000Z"
-  },
-  {
-    "codigo": "3201",
-    "nombre": "Aros laminados",
-    "descripcion": null,
-    "imagenPrincipal": null,
-    "nombrePadre": "Laminado en plata 1000",
-    "orden": 1,
-    "activo": true,
-    "fechaModificacion": null
-  },
-  {
-    "codigo": "3203",
-    "nombre": "Dijes laminados",
-    "descripcion": null,
-    "imagenPrincipal": null,
-    "nombrePadre": "Laminado en plata 1000",
-    "orden": 3,
-    "activo": true,
-    "fechaModificacion": null
-  },
-  {
-    "codigo": "3204",
-    "nombre": "Cadenas & gargantillas laminadas",
-    "descripcion": null,
-    "imagenPrincipal": null,
-    "nombrePadre": "Laminado en plata 1000",
-    "orden": 4,
-    "activo": true,
-    "fechaModificacion": null
-  },
-  {
-    "codigo": "3207",
-    "nombre": "Pulseras laminadas",
-    "descripcion": null,
-    "imagenPrincipal": null,
-    "nombrePadre": "Laminado en plata 1000",
-    "orden": 7,
-    "activo": true,
-    "fechaModificacion": null
-  },
-  {
-    "codigo": "3208",
-    "nombre": "Rosarios laminadas",
-    "descripcion": null,
-    "imagenPrincipal": null,
-    "nombrePadre": "Laminado en plata 1000",
-    "orden": 8,
-    "activo": true,
-    "fechaModificacion": null
-  },
-  {
-    "codigo": "3209",
-    "nombre": "Anillos laminados",
-    "descripcion": null,
-    "imagenPrincipal": null,
-    "nombrePadre": "Laminado en plata 1000",
-    "orden": 9,
-    "activo": true,
-    "fechaModificacion": null
-  },
-  {
-    "codigo": "35",
-    "nombre": "Cosmetica",
-    "descripcion": "Maquillajes, Accesorios, esmaltes",
-    "imagenPrincipal": "/uploads/rubros/20260916095550761.webp",
-    "nombrePadre": null,
-    "orden": 6,
-    "activo": true,
-    "fechaModificacion": "2026-09-16T17:40:57.000Z"
   },
   {
     "codigo": "3501",
@@ -350,14 +60,34 @@
     "fechaModificacion": "2026-09-16T14:44:42.000Z"
   },
   {
-    "codigo": "40",
-    "nombre": "Accesorios para el Cabello",
+    "codigo": "1001",
+    "nombre": "Aros plata",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": "Plata 900 / 925",
+    "orden": 1,
+    "activo": true,
+    "fechaModificacion": null
+  },
+  {
+    "codigo": "32",
+    "nombre": "Laminado en plata 1000",
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
-    "orden": 7,
+    "orden": 1,
     "activo": true,
-    "fechaModificacion": "2026-09-16T17:41:11.000Z"
+    "fechaModificacion": "2026-09-16T17:36:13.000Z"
+  },
+  {
+    "codigo": "3201",
+    "nombre": "Aros laminados",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": "Laminado en plata 1000",
+    "orden": 1,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "4001",
@@ -370,96 +100,6 @@
     "fechaModificacion": "2026-09-16T14:48:38.000Z"
   },
   {
-    "codigo": "4002",
-    "nombre": "Coleros",
-    "descripcion": null,
-    "imagenPrincipal": null,
-    "nombrePadre": "Accesorios para el Cabello",
-    "orden": 2,
-    "activo": true,
-    "fechaModificacion": "2026-09-16T14:49:24.000Z"
-  },
-  {
-    "codigo": "4003",
-    "nombre": "Broches",
-    "descripcion": null,
-    "imagenPrincipal": null,
-    "nombrePadre": "Accesorios para el Cabello",
-    "orden": 3,
-    "activo": true,
-    "fechaModificacion": "2026-09-16T14:50:14.000Z"
-  },
-  {
-    "codigo": "4004",
-    "nombre": "Tic-Tac",
-    "descripcion": null,
-    "imagenPrincipal": null,
-    "nombrePadre": "Accesorios para el Cabello",
-    "orden": 4,
-    "activo": true,
-    "fechaModificacion": "2026-09-16T14:50:57.000Z"
-  },
-  {
-    "codigo": "4005",
-    "nombre": "Vinchas",
-    "descripcion": null,
-    "imagenPrincipal": null,
-    "nombrePadre": "Accesorios para el Cabello",
-    "orden": 5,
-    "activo": true,
-    "fechaModificacion": "2026-09-16T14:51:52.000Z"
-  },
-  {
-    "codigo": "4006",
-    "nombre": "Elastiquines",
-    "descripcion": null,
-    "imagenPrincipal": null,
-    "nombrePadre": "Accesorios para el Cabello",
-    "orden": 6,
-    "activo": true,
-    "fechaModificacion": "2026-09-16T14:52:40.000Z"
-  },
-  {
-    "codigo": "4007",
-    "nombre": "Blister",
-    "descripcion": null,
-    "imagenPrincipal": null,
-    "nombrePadre": "Accesorios para el Cabello",
-    "orden": 7,
-    "activo": true,
-    "fechaModificacion": "2026-09-16T14:55:11.000Z"
-  },
-  {
-    "codigo": "50",
-    "nombre": "Textil",
-    "descripcion": null,
-    "imagenPrincipal": null,
-    "nombrePadre": null,
-    "orden": 10,
-    "activo": true,
-    "fechaModificacion": "2026-09-16T17:38:41.000Z"
-  },
-  {
-    "codigo": "60",
-    "nombre": "Relojes",
-    "descripcion": null,
-    "imagenPrincipal": null,
-    "nombrePadre": null,
-    "orden": 11,
-    "activo": true,
-    "fechaModificacion": "2026-09-16T17:38:54.000Z"
-  },
-  {
-    "codigo": "80",
-    "nombre": "Marroquineria",
-    "descripcion": null,
-    "imagenPrincipal": null,
-    "nombrePadre": null,
-    "orden": 5,
-    "activo": true,
-    "fechaModificacion": "2026-09-16T17:39:10.000Z"
-  },
-  {
     "codigo": "8001",
     "nombre": "Mochilas",
     "descripcion": null,
@@ -468,6 +108,46 @@
     "orden": 1,
     "activo": true,
     "fechaModificacion": null
+  },
+  {
+    "codigo": "0402",
+    "nombre": "Abridores acero",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": "Acero Quirurgico",
+    "orden": 2,
+    "activo": true,
+    "fechaModificacion": null
+  },
+  {
+    "codigo": "10",
+    "nombre": "Plata 900 / 925",
+    "descripcion": null,
+    "imagenPrincipal": "/uploads/rubros/20260915120217364.webp",
+    "nombrePadre": null,
+    "orden": 2,
+    "activo": true,
+    "fechaModificacion": "2026-09-16T15:51:44.000Z"
+  },
+  {
+    "codigo": "1002",
+    "nombre": "Abridores plata",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": "Plata 900 / 925",
+    "orden": 2,
+    "activo": true,
+    "fechaModificacion": null
+  },
+  {
+    "codigo": "4002",
+    "nombre": "Coleros",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": "Accesorios para el Cabello",
+    "orden": 2,
+    "activo": true,
+    "fechaModificacion": "2026-09-16T14:49:24.000Z"
   },
   {
     "codigo": "8002",
@@ -480,24 +160,294 @@
     "fechaModificacion": null
   },
   {
-    "codigo": "85",
-    "nombre": "Packaging",
+    "codigo": "04",
+    "nombre": "Acero Quirurgico",
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
-    "orden": 12,
+    "orden": 3,
     "activo": true,
-    "fechaModificacion": "2026-09-16T17:39:36.000Z"
+    "fechaModificacion": "2026-09-16T17:36:28.000Z"
   },
   {
-    "codigo": "90",
-    "nombre": "Bazar",
+    "codigo": "0403",
+    "nombre": "Dijes acero",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": "Acero Quirurgico",
+    "orden": 3,
+    "activo": true,
+    "fechaModificacion": null
+  },
+  {
+    "codigo": "1003",
+    "nombre": "Dijes plata",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": "Plata 900 / 925",
+    "orden": 3,
+    "activo": true,
+    "fechaModificacion": null
+  },
+  {
+    "codigo": "3203",
+    "nombre": "Dijes laminados",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": "Laminado en plata 1000",
+    "orden": 3,
+    "activo": true,
+    "fechaModificacion": null
+  },
+  {
+    "codigo": "4003",
+    "nombre": "Broches",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": "Accesorios para el Cabello",
+    "orden": 3,
+    "activo": true,
+    "fechaModificacion": "2026-09-16T14:50:14.000Z"
+  },
+  {
+    "codigo": "0404",
+    "nombre": "Cadenas acero",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": "Acero Quirurgico",
+    "orden": 4,
+    "activo": true,
+    "fechaModificacion": null
+  },
+  {
+    "codigo": "1004",
+    "nombre": "Cadena plata",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": "Plata 900 / 925",
+    "orden": 4,
+    "activo": true,
+    "fechaModificacion": null
+  },
+  {
+    "codigo": "16",
+    "nombre": "Enchapado en Oro",
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
-    "orden": 13,
+    "orden": 4,
     "activo": true,
-    "fechaModificacion": "2026-09-16T17:39:58.000Z"
+    "fechaModificacion": "2026-09-16T17:54:09.000Z"
+  },
+  {
+    "codigo": "3204",
+    "nombre": "Cadenas & gargantillas laminadas",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": "Laminado en plata 1000",
+    "orden": 4,
+    "activo": true,
+    "fechaModificacion": null
+  },
+  {
+    "codigo": "4004",
+    "nombre": "Tic-Tac",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": "Accesorios para el Cabello",
+    "orden": 4,
+    "activo": true,
+    "fechaModificacion": "2026-09-16T14:50:57.000Z"
+  },
+  {
+    "codigo": "1005",
+    "nombre": "Cadena plata 900",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": "Plata 900 / 925",
+    "orden": 5,
+    "activo": true,
+    "fechaModificacion": null
+  },
+  {
+    "codigo": "4005",
+    "nombre": "Vinchas",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": "Accesorios para el Cabello",
+    "orden": 5,
+    "activo": true,
+    "fechaModificacion": "2026-09-16T14:51:52.000Z"
+  },
+  {
+    "codigo": "80",
+    "nombre": "Marroquineria",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": null,
+    "orden": 5,
+    "activo": true,
+    "fechaModificacion": "2026-09-16T17:39:10.000Z"
+  },
+  {
+    "codigo": "1006",
+    "nombre": "Conjunto plata",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": "Plata 900 / 925",
+    "orden": 6,
+    "activo": true,
+    "fechaModificacion": null
+  },
+  {
+    "codigo": "35",
+    "nombre": "Cosmetica",
+    "descripcion": "Maquillajes, Accesorios, esmaltes",
+    "imagenPrincipal": "/uploads/rubros/20260916095550761.webp",
+    "nombrePadre": null,
+    "orden": 6,
+    "activo": true,
+    "fechaModificacion": "2026-09-16T17:40:57.000Z"
+  },
+  {
+    "codigo": "4006",
+    "nombre": "Elastiquines",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": "Accesorios para el Cabello",
+    "orden": 6,
+    "activo": true,
+    "fechaModificacion": "2026-09-16T14:52:40.000Z"
+  },
+  {
+    "codigo": "0407",
+    "nombre": "Pulseras acero",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": "Acero Quirurgico",
+    "orden": 7,
+    "activo": true,
+    "fechaModificacion": null
+  },
+  {
+    "codigo": "1007",
+    "nombre": "Pulsera plata",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": "Plata 900 / 925",
+    "orden": 7,
+    "activo": true,
+    "fechaModificacion": null
+  },
+  {
+    "codigo": "3207",
+    "nombre": "Pulseras laminadas",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": "Laminado en plata 1000",
+    "orden": 7,
+    "activo": true,
+    "fechaModificacion": null
+  },
+  {
+    "codigo": "40",
+    "nombre": "Accesorios para el Cabello",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": null,
+    "orden": 7,
+    "activo": true,
+    "fechaModificacion": "2026-09-16T17:41:11.000Z"
+  },
+  {
+    "codigo": "4007",
+    "nombre": "Blister",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": "Accesorios para el Cabello",
+    "orden": 7,
+    "activo": true,
+    "fechaModificacion": "2026-09-16T14:55:11.000Z"
+  },
+  {
+    "codigo": "0408",
+    "nombre": "Anillos acero",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": "Acero Quirurgico",
+    "orden": 8,
+    "activo": true,
+    "fechaModificacion": null
+  },
+  {
+    "codigo": "3208",
+    "nombre": "Rosarios laminadas",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": "Laminado en plata 1000",
+    "orden": 8,
+    "activo": true,
+    "fechaModificacion": null
+  },
+  {
+    "codigo": "95",
+    "nombre": "Sahumerios",
+    "descripcion": "Hola",
+    "imagenPrincipal": "/uploads/rubros/20260915102753609.webp",
+    "nombrePadre": null,
+    "orden": 8,
+    "activo": true,
+    "fechaModificacion": "2026-09-16T18:06:54.000Z"
+  },
+  {
+    "codigo": "0409",
+    "nombre": "Otros",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": "Acero Quirurgico",
+    "orden": 9,
+    "activo": true,
+    "fechaModificacion": "2026-09-16T13:08:49.000Z"
+  },
+  {
+    "codigo": "1009",
+    "nombre": "Anillo plata",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": "Plata 900 / 925",
+    "orden": 9,
+    "activo": true,
+    "fechaModificacion": null
+  },
+  {
+    "codigo": "30",
+    "nombre": "Fantasia",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": null,
+    "orden": 9,
+    "activo": true,
+    "fechaModificacion": "2026-09-16T17:34:38.000Z"
+  },
+  {
+    "codigo": "31",
+    "nombre": "jugueteria",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": null,
+    "orden": 9,
+    "activo": true,
+    "fechaModificacion": "2026-09-16T17:35:25.000Z"
+  },
+  {
+    "codigo": "3209",
+    "nombre": "Anillos laminados",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": "Laminado en plata 1000",
+    "orden": 9,
+    "activo": true,
+    "fechaModificacion": null
   },
   {
     "codigo": "91",
@@ -510,24 +460,44 @@
     "fechaModificacion": "2026-09-16T17:41:27.000Z"
   },
   {
-    "codigo": "93",
-    "nombre": "Varios",
+    "codigo": "1010",
+    "nombre": "Fornitura",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": "Plata 900 / 925",
+    "orden": 10,
+    "activo": true,
+    "fechaModificacion": "2026-09-16T13:54:51.000Z"
+  },
+  {
+    "codigo": "50",
+    "nombre": "Textil",
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
-    "orden": 15,
+    "orden": 10,
     "activo": true,
-    "fechaModificacion": "2026-09-16T17:41:41.000Z"
+    "fechaModificacion": "2026-09-16T17:38:41.000Z"
   },
   {
-    "codigo": "95",
-    "nombre": "Sahumerios",
-    "descripcion": "Hola",
-    "imagenPrincipal": "/uploads/rubros/20260915102753609.webp",
-    "nombrePadre": null,
-    "orden": 6,
+    "codigo": "1011",
+    "nombre": "Piercing",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": "Plata 900 / 925",
+    "orden": 11,
     "activo": true,
-    "fechaModificacion": "2026-09-16T17:41:57.000Z"
+    "fechaModificacion": "2026-09-16T14:31:05.000Z"
+  },
+  {
+    "codigo": "60",
+    "nombre": "Relojes",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": null,
+    "orden": 11,
+    "activo": true,
+    "fechaModificacion": "2026-09-16T17:38:54.000Z"
   },
   {
     "codigo": "98",
@@ -540,6 +510,16 @@
     "fechaModificacion": "2026-09-16T17:42:13.000Z"
   },
   {
+    "codigo": "85",
+    "nombre": "Packaging",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": null,
+    "orden": 12,
+    "activo": true,
+    "fechaModificacion": "2026-09-16T17:39:36.000Z"
+  },
+  {
     "codigo": "99",
     "nombre": "Electro-Accesorios Varios",
     "descripcion": null,
@@ -548,5 +528,25 @@
     "orden": 12,
     "activo": true,
     "fechaModificacion": "2026-09-16T17:42:30.000Z"
+  },
+  {
+    "codigo": "90",
+    "nombre": "Bazar",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": null,
+    "orden": 13,
+    "activo": true,
+    "fechaModificacion": "2026-09-16T17:39:58.000Z"
+  },
+  {
+    "codigo": "93",
+    "nombre": "Varios",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": null,
+    "orden": 15,
+    "activo": true,
+    "fechaModificacion": "2026-09-16T17:41:41.000Z"
   }
 ]
