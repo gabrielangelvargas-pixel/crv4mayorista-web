@@ -1,20 +1,20 @@
 [
   {
     "codigo": "00",
-    "nombre": "Cosmeticassb",
+    "nombre": "Cosmetica",
     "descripcion": null,
-    "imagenPrincipal": "/uploads/rubros/20260915102809593.webp",
+    "imagenPrincipal": "/uploads/rubros/20260916095126538.webp",
     "nombrePadre": null,
     "orden": 0,
     "activo": true,
-    "fechaModificacion": "2026-09-16T12:49:11.000Z"
+    "fechaModificacion": "2026-09-16T12:51:42.000Z"
   },
   {
     "codigo": "0001",
     "nombre": "Maquillaje",
     "descripcion": null,
     "imagenPrincipal": null,
-    "nombrePadre": "Cosmeticassb",
+    "nombrePadre": "Cosmetica",
     "orden": 0,
     "activo": true,
     "fechaModificacion": null
@@ -24,7 +24,7 @@
     "nombre": "Accesorios de cosmetica",
     "descripcion": null,
     "imagenPrincipal": null,
-    "nombrePadre": "Cosmeticassb",
+    "nombrePadre": "Cosmetica",
     "orden": 0,
     "activo": true,
     "fechaModificacion": null
