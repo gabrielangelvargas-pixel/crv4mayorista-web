@@ -50,7 +50,7 @@ app.get('/rubros', async (_request, response, next) => {
     try {
         const rubros = await getRubros();
         response.send(renderLayout({
-            title: 'Rubros | CRV4 Mayorista',
+            title: 'CRV4 Mayorista: Rubros',
             description: 'Rubros disponibles en el catalogo mayorista de CRV4.',
             url: `${siteUrl}/rubros`,
         }, renderRubroList(rubros), rubros));
@@ -58,7 +58,7 @@ app.get('/rubros', async (_request, response, next) => {
     catch (error) {
         if (error instanceof RubrosDatabaseError) {
             response.send(renderLayout({
-                title: 'Rubros | CRV4 Mayorista',
+                title: 'CRV4 Mayorista: Rubros',
                 description: 'No se pudieron cargar los datos reales de rubros.',
                 url: `${siteUrl}/rubros`,
             }, renderRealDataLoadFailed()));
@@ -75,7 +75,7 @@ const renderRubroRoute = async (request, response, next) => {
         const rubro = rubros.find((item) => item.codigo.toLowerCase() === normalizedCode) ?? null;
         if (!rubro) {
             response.status(404).send(renderLayout({
-                title: 'Rubro no encontrado | CRV4 Mayorista',
+                title: 'CRV4 Mayorista: Rubro no encontrado',
                 description: 'No se encontro el rubro solicitado.',
                 url: `${siteUrl}${request.path}`,
             }, '<section class="empty"><h1>Rubro no encontrado</h1></section>', rubros));
@@ -90,7 +90,7 @@ const renderRubroRoute = async (request, response, next) => {
         const imageUrl = toAbsoluteUrl(siteUrl, rubro.imagenPrincipal);
         const rubroUrl = `${siteUrl}${getRubroPath(rubro)}`;
         response.send(renderLayout({
-            title: `${rubro.nombre} | CRV4 Mayorista`,
+            title: `CRV4 Mayorista: ${rubro.nombre}`,
             description: getDescription(rubro),
             url: rubroUrl,
             image: imageUrl,
