@@ -123,7 +123,7 @@ export function renderRubroDetail(rubro, children = [], imageUrl) {
     const sortedChildren = [...children].sort(compareRubrosByOrder);
     return `
     <article class="rubro-detail">
-      ${imageUrl ? `<img class="cover" src="${escapeHtml(imageUrl)}" alt="">` : ''}
+      ${imageUrl ? `<img class="cover" src="${escapeHtml(imageUrl)}" alt="">` : '<div class="cover image-placeholder" aria-label="Sin imagen"></div>'}
     </article>
     ${sortedChildren.length > 0 ? `
       <section class="category-section">
