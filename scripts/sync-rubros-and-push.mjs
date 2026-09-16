@@ -1,6 +1,6 @@
 import { spawnSync } from 'node:child_process'
 
-run('npm', ['run', 'sync:rubros'])
+run(process.execPath, ['scripts/sync-rubros-from-local.mjs'])
 
 const status = run('git', ['status', '--short'], { capture: true }).trim()
 if (!status) {
@@ -8,7 +8,7 @@ if (!status) {
   process.exit(0)
 }
 
-run('git', ['add', 'data/rubros.json', 'public/uploads/rubros', 'uploads/rubros'])
+run('git', ['add', 'data/rubros.json', 'public/uploads/rubros', 'uploads/rubros', 'package.json', 'scripts/sync-rubros-and-push.mjs'])
 run('git', ['commit', '-m', 'Sync rubros'])
 run('git', ['push'])
 
@@ -16,9 +16,13 @@ function run(command, args, options = {}) {
   const result = spawnSync(command, args, {
     cwd: process.cwd(),
     encoding: 'utf8',
-    shell: process.platform === 'win32',
     stdio: options.capture ? 'pipe' : 'inherit',
   })
+
+  if (result.error) {
+    console.error(`No se pudo ejecutar ${command}: ${result.error.message}`)
+    process.exit(1)
+  }
 
   if (result.status !== 0) {
     if (options.capture && result.stderr) {
