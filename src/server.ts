@@ -5,7 +5,7 @@ import type { RequestHandler } from 'express'
 import helmet from 'helmet'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { getRubroByCodigo, getRubroPath, getRubros, RubrosDatabaseError } from './data/rubros.js'
+import { getRubroPath, getRubros, RubrosDatabaseError } from './data/rubros.js'
 import { getDescription, renderHome, renderLayout, renderRealDataLoadFailed, renderRubroDetail, renderRubroList } from './render.js'
 import { slugify, toAbsoluteUrl } from './text.js'
 
@@ -37,7 +37,7 @@ app.get('/', async (_request, response, next) => {
       title: 'CRV4 Mayorista',
       description: 'Catalogo publico de rubros mayoristas de CRV4.',
       url: `${siteUrl}/`,
-    }, renderHome(rubros)))
+    }, renderHome(rubros), rubros))
   } catch (error) {
     if (error instanceof RubrosDatabaseError) {
       response.send(renderLayout({
@@ -59,7 +59,7 @@ app.get('/rubros', async (_request, response, next) => {
       title: 'Rubros | CRV4 Mayorista',
       description: 'Rubros disponibles en el catalogo mayorista de CRV4.',
       url: `${siteUrl}/rubros`,
-    }, renderRubroList(rubros)))
+    }, renderRubroList(rubros), rubros))
   } catch (error) {
     if (error instanceof RubrosDatabaseError) {
       response.send(renderLayout({
@@ -77,13 +77,15 @@ app.get('/rubros', async (_request, response, next) => {
 const renderRubroRoute: RequestHandler = async (request, response, next) => {
   try {
     const codigo = Array.isArray(request.params.codigo) ? request.params.codigo[0] : request.params.codigo
-    const rubro = await getRubroByCodigo(codigo)
+    const rubros = await getRubros()
+    const normalizedCode = codigo.trim().toLowerCase()
+    const rubro = rubros.find((item) => item.codigo.toLowerCase() === normalizedCode) ?? null
     if (!rubro) {
       response.status(404).send(renderLayout({
         title: 'Rubro no encontrado | CRV4 Mayorista',
         description: 'No se encontro el rubro solicitado.',
         url: `${siteUrl}${request.path}`,
-      }, '<section class="empty"><h1>Rubro no encontrado</h1></section>'))
+      }, '<section class="empty"><h1>Rubro no encontrado</h1></section>', rubros))
       return
     }
 
@@ -100,7 +102,7 @@ const renderRubroRoute: RequestHandler = async (request, response, next) => {
       description: getDescription(rubro),
       url: rubroUrl,
       image: imageUrl,
-    }, renderRubroDetail(rubro, imageUrl)))
+    }, renderRubroDetail(rubro, imageUrl), rubros))
   } catch (error) {
     if (error instanceof RubrosDatabaseError) {
       response.send(renderLayout({

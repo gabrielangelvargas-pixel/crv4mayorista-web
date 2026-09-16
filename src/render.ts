@@ -2,7 +2,7 @@ import type { RubroPublico, SeoMetadata } from './types.js'
 import { escapeHtml } from './text.js'
 import { getRubroPath } from './data/rubros.js'
 
-export function renderLayout(metadata: SeoMetadata, content: string) {
+export function renderLayout(metadata: SeoMetadata, content: string, menuRubros: RubroPublico[] = []) {
   const imageTags = metadata.image
     ? `
     <meta property="og:image" content="${escapeHtml(metadata.image)}">
@@ -10,6 +10,11 @@ export function renderLayout(metadata: SeoMetadata, content: string) {
     <meta property="og:image:height" content="628">
     <meta name="twitter:image" content="${escapeHtml(metadata.image)}">`
     : ''
+  const parentRubros = menuRubros.filter((rubro) => !rubro.nombrePadre)
+  const menuLinks = [
+    '<a href="/">Inicio</a>',
+    ...parentRubros.map((rubro) => `<a href="${getRubroPath(rubro)}">${escapeHtml(rubro.nombre)}</a>`),
+  ].join('')
 
   return `<!doctype html>
 <html lang="es">
@@ -36,10 +41,7 @@ export function renderLayout(metadata: SeoMetadata, content: string) {
         <button class="icon-button" type="button" data-menu-close aria-label="Cerrar menu">×</button>
       </div>
       <nav class="side-nav">
-        <a href="/">Inicio</a>
-        <a href="/rubros">Rubros</a>
-        <a href="/#mayorista">Venta mayorista</a>
-        <a href="/#contacto">Contacto</a>
+        ${menuLinks}
       </nav>
     </aside>
     <header class="site-header">
