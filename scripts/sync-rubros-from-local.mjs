@@ -21,13 +21,13 @@ await mkdir(rootUploadsPath, { recursive: true })
 
 const token = await login()
 const localRubros = await getLocalRubros(token)
-const { rubros, changedCount, skippedCount } = await syncDatabase(localRubros, token)
+const { rubros, changedCount, skippedCount, deactivatedCount } = await syncDatabase(localRubros, token)
 const publicRubros = rubros
   .map(({ localId: _localId, localIdPadre: _localIdPadre, ...rubro }) => rubro)
   .filter((rubro) => rubro.activo)
 await writeFile(dataPath, `${JSON.stringify(publicRubros, null, 2)}\n`, 'utf8')
 
-console.log(`Rubros revisados: ${rubros.length}. Actualizados: ${changedCount}. Sin cambios: ${skippedCount}.`)
+console.log(`Rubros revisados: ${rubros.length}. Actualizados: ${changedCount}. Sin cambios: ${skippedCount}. Desactivados remotos: ${deactivatedCount}.`)
 
 function requireEnv(name) {
   const value = process.env[name]
@@ -173,6 +173,7 @@ async function syncDatabase(localRubros, token) {
     await connection.execute(`
       CREATE TABLE IF NOT EXISTS rubros (
         Id INT NOT NULL AUTO_INCREMENT,
+        LocalId INT NULL,
         IdRubro VARCHAR(6) NOT NULL,
         NombreRubro VARCHAR(45) NOT NULL,
         Descripcion VARCHAR(255) NULL,
@@ -182,25 +183,36 @@ async function syncDatabase(localRubros, token) {
         Activo TINYINT(1) NOT NULL DEFAULT 1,
         FechaModificacion DATETIME NULL,
         PRIMARY KEY (Id),
+        KEY idx_rubros_LocalId (LocalId),
         UNIQUE KEY uq_rubros_IdRubro (IdRubro),
         KEY fk_rubros_padre (IdPadre)
       )
     `)
+    await ensureRemoteColumn(connection, 'LocalId', 'INT NULL AFTER `Id`')
+    await ensureRemoteIndex(connection, 'idx_rubros_LocalId', 'CREATE INDEX idx_rubros_LocalId ON rubros (LocalId)')
     await ensureRemoteColumn(connection, 'Activo', 'TINYINT(1) NOT NULL DEFAULT 1 AFTER `Orden`')
     await ensureRemoteColumn(connection, 'FechaModificacion', 'DATETIME NULL AFTER `Activo`')
 
     const [existingRows] = await connection.execute(`
-      SELECT Id, IdRubro, NombreRubro, Descripcion, ImagenPrincipal, Orden, Activo, FechaModificacion
+      SELECT Id, LocalId, IdRubro, NombreRubro, Descripcion, ImagenPrincipal, Orden, Activo, FechaModificacion
       FROM rubros
     `)
     const existingByCode = new Map(existingRows.map((row) => [row.IdRubro, row]))
+    const existingByLocalId = new Map(
+      existingRows
+        .filter((row) => row.LocalId !== null && row.LocalId !== undefined)
+        .map((row) => [Number(row.LocalId), row]),
+    )
     const rubros = []
-    const changedCodes = new Set()
+    const localCodes = new Set()
+    const matchedRemoteIds = new Set()
     let changedCount = 0
     let skippedCount = 0
+    let deactivatedCount = 0
 
     for (const localRubro of localRubros) {
-      const remoteRubro = existingByCode.get(localRubro.codigo)
+      localCodes.add(localRubro.codigo)
+      const remoteRubro = existingByLocalId.get(Number(localRubro.id)) ?? existingByCode.get(localRubro.codigo)
       const rubro = {
         localId: localRubro.id,
         codigo: localRubro.codigo,
@@ -216,6 +228,9 @@ async function syncDatabase(localRubros, token) {
       const hasChanges = isRubroChanged(rubro, remoteRubro)
       rubro.imagenPrincipal = await ensureSyncedImage(localRubro.imagenPrincipal, token, hasChanges)
       rubros.push(rubro)
+      if (remoteRubro) {
+        matchedRemoteIds.add(Number(remoteRubro.Id))
+      }
 
       if (!hasChanges) {
         skippedCount += 1
@@ -226,22 +241,44 @@ async function syncDatabase(localRubros, token) {
         await deleteSyncedImage(remoteRubro.ImagenPrincipal)
       }
 
-      await connection.execute(
-        `
-          INSERT INTO rubros (IdRubro, NombreRubro, Descripcion, ImagenPrincipal, IdPadre, Orden, Activo, FechaModificacion)
-          VALUES (?, ?, ?, ?, NULL, ?, ?, ?)
-          ON DUPLICATE KEY UPDATE
-            NombreRubro = VALUES(NombreRubro),
-            Descripcion = VALUES(Descripcion),
-            ImagenPrincipal = VALUES(ImagenPrincipal),
-            Orden = VALUES(Orden),
-            Activo = VALUES(Activo),
-            FechaModificacion = VALUES(FechaModificacion)
-        `,
-        [rubro.codigo, rubro.nombre, rubro.descripcion, rubro.imagenPrincipal, rubro.orden, rubro.activo ? 1 : 0, toMysqlDate(rubro.fechaModificacion)],
-      )
-      changedCodes.add(rubro.codigo)
+      if (remoteRubro) {
+        await connection.execute(
+          `
+            UPDATE rubros
+            SET LocalId = ?,
+                IdRubro = ?,
+                NombreRubro = ?,
+                Descripcion = ?,
+                ImagenPrincipal = ?,
+                Orden = ?,
+                Activo = ?,
+                FechaModificacion = ?
+            WHERE Id = ?
+          `,
+          [rubro.localId, rubro.codigo, rubro.nombre, rubro.descripcion, rubro.imagenPrincipal, rubro.orden, rubro.activo ? 1 : 0, toMysqlDate(rubro.fechaModificacion), remoteRubro.Id],
+        )
+      } else {
+        await connection.execute(
+          `
+            INSERT INTO rubros (LocalId, IdRubro, NombreRubro, Descripcion, ImagenPrincipal, IdPadre, Orden, Activo, FechaModificacion)
+            VALUES (?, ?, ?, ?, ?, NULL, ?, ?, ?)
+          `,
+          [rubro.localId, rubro.codigo, rubro.nombre, rubro.descripcion, rubro.imagenPrincipal, rubro.orden, rubro.activo ? 1 : 0, toMysqlDate(rubro.fechaModificacion)],
+        )
+      }
       changedCount += 1
+    }
+
+    for (const remoteRubro of existingRows) {
+      if (matchedRemoteIds.has(Number(remoteRubro.Id)) || localCodes.has(remoteRubro.IdRubro) || Number(remoteRubro.Activo ?? 1) === 0) {
+        continue
+      }
+
+      await connection.execute(
+        'UPDATE rubros SET Activo = 0, FechaModificacion = NOW() WHERE Id = ?',
+        [remoteRubro.Id],
+      )
+      deactivatedCount += 1
     }
 
     const [rows] = await connection.execute('SELECT Id, IdRubro FROM rubros')
@@ -251,18 +288,14 @@ async function syncDatabase(localRubros, token) {
     for (const rubro of rubros) {
       const parentCode = rubro.localIdPadre ? localIdToCode.get(rubro.localIdPadre) : null
       const parentId = parentCode ? idByCode.get(parentCode) ?? null : null
-      if (!changedCodes.has(rubro.codigo)) {
-        continue
-      }
-
       await connection.execute(
-        'UPDATE rubros SET IdPadre = ? WHERE IdRubro = ?',
-        [parentId, rubro.codigo],
+        'UPDATE rubros SET LocalId = ?, IdPadre = ? WHERE IdRubro = ?',
+        [rubro.localId, parentId, rubro.codigo],
       )
     }
 
     await connection.commit()
-    return { rubros, changedCount, skippedCount }
+    return { rubros, changedCount, skippedCount, deactivatedCount }
   } catch (error) {
     await connection.rollback()
     throw error
@@ -289,6 +322,24 @@ async function ensureRemoteColumn(connection, columnName, columnDefinition) {
   await connection.execute(`ALTER TABLE rubros ADD COLUMN ${columnName} ${columnDefinition}`)
 }
 
+async function ensureRemoteIndex(connection, indexName, createStatement) {
+  const [rows] = await connection.execute(
+    `
+      SELECT COUNT(*) AS total
+      FROM information_schema.STATISTICS
+      WHERE TABLE_SCHEMA = DATABASE()
+        AND TABLE_NAME = 'rubros'
+        AND INDEX_NAME = ?
+    `,
+    [indexName],
+  )
+  if (Number(rows[0]?.total ?? 0) > 0) {
+    return
+  }
+
+  await connection.execute(createStatement)
+}
+
 function isRubroChanged(rubro, remoteRubro) {
   if (!remoteRubro) {
     return true
@@ -300,7 +351,9 @@ function isRubroChanged(rubro, remoteRubro) {
     return true
   }
 
-  return remoteRubro.NombreRubro !== rubro.nombre
+  return Number(remoteRubro.LocalId ?? 0) !== Number(rubro.localId)
+    || remoteRubro.IdRubro !== rubro.codigo
+    || remoteRubro.NombreRubro !== rubro.nombre
     || normalizeNullable(remoteRubro.Descripcion) !== normalizeNullable(rubro.descripcion)
     || normalizeNullable(remoteRubro.ImagenPrincipal) !== normalizeNullable(rubro.imagenPrincipal)
     || Number(remoteRubro.Orden ?? 0) !== rubro.orden

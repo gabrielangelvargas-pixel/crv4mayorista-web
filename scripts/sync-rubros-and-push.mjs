@@ -8,7 +8,7 @@ if (!status) {
   process.exit(0)
 }
 
-run('git', ['add', 'data/rubros.json', 'public/uploads/rubros', 'uploads/rubros', 'package.json', 'scripts/sync-rubros-and-push.mjs'])
+run('git', ['add', 'data/rubros.json', 'public/uploads/rubros', 'uploads/rubros', 'database/001_rubros.sql', 'package.json', 'scripts/sync-rubros-from-local.mjs', 'scripts/sync-rubros-and-push.mjs'])
 run('git', ['commit', '-m', 'Sync rubros'])
 run('git', ['push'])
 
