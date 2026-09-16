@@ -325,9 +325,9 @@
     "descripcion": "Maquillajes, Accesorios, esmaltes",
     "imagenPrincipal": "/uploads/rubros/20260916095550761.webp",
     "nombrePadre": null,
-    "orden": 0,
+    "orden": 6,
     "activo": true,
-    "fechaModificacion": "2026-09-16T17:33:24.000Z"
+    "fechaModificacion": "2026-09-16T17:40:57.000Z"
   },
   {
     "codigo": "3501",
@@ -355,9 +355,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
-    "orden": 0,
+    "orden": 7,
     "activo": true,
-    "fechaModificacion": null
+    "fechaModificacion": "2026-09-16T17:41:11.000Z"
   },
   {
     "codigo": "4001",
@@ -505,9 +505,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
-    "orden": 0,
+    "orden": 9,
     "activo": true,
-    "fechaModificacion": null
+    "fechaModificacion": "2026-09-16T17:41:27.000Z"
   },
   {
     "codigo": "93",
@@ -515,9 +515,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
-    "orden": 0,
+    "orden": 15,
     "activo": true,
-    "fechaModificacion": null
+    "fechaModificacion": "2026-09-16T17:41:41.000Z"
   },
   {
     "codigo": "95",
@@ -525,9 +525,9 @@
     "descripcion": "Hola",
     "imagenPrincipal": "/uploads/rubros/20260915102753609.webp",
     "nombrePadre": null,
-    "orden": 0,
+    "orden": 6,
     "activo": true,
-    "fechaModificacion": null
+    "fechaModificacion": "2026-09-16T17:41:57.000Z"
   },
   {
     "codigo": "98",
@@ -535,9 +535,9 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
-    "orden": 0,
+    "orden": 11,
     "activo": true,
-    "fechaModificacion": null
+    "fechaModificacion": "2026-09-16T17:42:13.000Z"
   },
   {
     "codigo": "99",
@@ -545,8 +545,8 @@
     "descripcion": null,
     "imagenPrincipal": null,
     "nombrePadre": null,
-    "orden": 0,
+    "orden": 12,
     "activo": true,
-    "fechaModificacion": null
+    "fechaModificacion": "2026-09-16T17:42:30.000Z"
   }
 ]
