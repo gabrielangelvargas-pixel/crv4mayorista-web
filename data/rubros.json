@@ -350,6 +350,76 @@
     "fechaModificacion": null
   },
   {
+    "codigo": "4001",
+    "nombre": "Scuncy`s",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": "Accesorios para el Cabello",
+    "orden": 1,
+    "activo": true,
+    "fechaModificacion": "2026-09-16T14:48:38.000Z"
+  },
+  {
+    "codigo": "4002",
+    "nombre": "Coleros",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": "Accesorios para el Cabello",
+    "orden": 2,
+    "activo": true,
+    "fechaModificacion": "2026-09-16T14:49:24.000Z"
+  },
+  {
+    "codigo": "4003",
+    "nombre": "Broches",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": "Accesorios para el Cabello",
+    "orden": 3,
+    "activo": true,
+    "fechaModificacion": "2026-09-16T14:50:14.000Z"
+  },
+  {
+    "codigo": "4004",
+    "nombre": "Tic-Tac",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": "Accesorios para el Cabello",
+    "orden": 4,
+    "activo": true,
+    "fechaModificacion": "2026-09-16T14:50:57.000Z"
+  },
+  {
+    "codigo": "4005",
+    "nombre": "Vinchas",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": "Accesorios para el Cabello",
+    "orden": 5,
+    "activo": true,
+    "fechaModificacion": "2026-09-16T14:51:52.000Z"
+  },
+  {
+    "codigo": "4006",
+    "nombre": "Elastiquines",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": "Accesorios para el Cabello",
+    "orden": 6,
+    "activo": true,
+    "fechaModificacion": "2026-09-16T14:52:40.000Z"
+  },
+  {
+    "codigo": "4007",
+    "nombre": "Blister",
+    "descripcion": null,
+    "imagenPrincipal": null,
+    "nombrePadre": "Accesorios para el Cabello",
+    "orden": 7,
+    "activo": true,
+    "fechaModificacion": "2026-09-16T14:55:11.000Z"
+  },
+  {
     "codigo": "50",
     "nombre": "Textil",
     "descripcion": null,
