@@ -86,6 +86,7 @@ const renderRubroRoute = async (request, response, next) => {
             response.redirect(301, getRubroPath(rubro));
             return;
         }
+        const childRubros = rubros.filter((item) => item.nombrePadre === rubro.nombre);
         const imageUrl = toAbsoluteUrl(siteUrl, rubro.imagenPrincipal);
         const rubroUrl = `${siteUrl}${getRubroPath(rubro)}`;
         response.send(renderLayout({
@@ -93,7 +94,7 @@ const renderRubroRoute = async (request, response, next) => {
             description: getDescription(rubro),
             url: rubroUrl,
             image: imageUrl,
-        }, renderRubroDetail(rubro, imageUrl), rubros));
+        }, renderRubroDetail(rubro, childRubros, imageUrl), rubros));
     }
     catch (error) {
         if (error instanceof RubrosDatabaseError) {

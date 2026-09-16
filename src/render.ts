@@ -1,5 +1,5 @@
 import type { RubroPublico, SeoMetadata } from './types.js'
-import { escapeHtml } from './text.js'
+import { compareCodes, escapeHtml } from './text.js'
 import { getRubroPath } from './data/rubros.js'
 
 export function renderLayout(metadata: SeoMetadata, content: string, menuRubros: RubroPublico[] = []) {
@@ -10,7 +10,7 @@ export function renderLayout(metadata: SeoMetadata, content: string, menuRubros:
     <meta property="og:image:height" content="628">
     <meta name="twitter:image" content="${escapeHtml(metadata.image)}">`
     : ''
-  const parentRubros = menuRubros.filter((rubro) => !rubro.nombrePadre)
+  const parentRubros = menuRubros.filter((rubro) => !rubro.nombrePadre).sort(compareRubrosByOrder)
   const menuLinks = [
     '<a href="/">Inicio</a>',
     ...parentRubros.map((rubro) => `<a href="${getRubroPath(rubro)}">${escapeHtml(rubro.nombre)}</a>`),
@@ -126,7 +126,8 @@ export function renderRealDataLoadFailed() {
   `
 }
 
-export function renderRubroDetail(rubro: RubroPublico, imageUrl?: string) {
+export function renderRubroDetail(rubro: RubroPublico, children: RubroPublico[] = [], imageUrl?: string) {
+  const sortedChildren = [...children].sort(compareRubrosByOrder)
   return `
     <article class="rubro-detail">
       ${imageUrl ? `<img class="cover" src="${escapeHtml(imageUrl)}" alt="">` : ''}
@@ -136,6 +137,15 @@ export function renderRubroDetail(rubro: RubroPublico, imageUrl?: string) {
         <p>${escapeHtml(getDescription(rubro))}</p>
       </div>
     </article>
+    ${sortedChildren.length > 0 ? `
+      <section class="section-title child-rubros-title">
+        <div>
+          <p>Subrubros</p>
+          <h2>${escapeHtml(rubro.nombre)}</h2>
+        </div>
+      </section>
+      ${renderRubroGrid(sortedChildren)}
+    ` : ''}
   `
 }
 
@@ -163,4 +173,9 @@ function renderRubroCard(rubro: RubroPublico) {
 
 export function getDescription(rubro: RubroPublico) {
   return rubro.descripcion?.trim() || `${rubro.nombre} en CRV4 Mayorista.`
+}
+
+export function compareRubrosByOrder(first: RubroPublico, second: RubroPublico) {
+  const orderDifference = Number(first.orden ?? 0) - Number(second.orden ?? 0)
+  return orderDifference || compareCodes(first.codigo, second.codigo)
 }

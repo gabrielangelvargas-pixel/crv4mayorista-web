@@ -1,4 +1,4 @@
-import { escapeHtml } from './text.js';
+import { compareCodes, escapeHtml } from './text.js';
 import { getRubroPath } from './data/rubros.js';
 export function renderLayout(metadata, content, menuRubros = []) {
     const imageTags = metadata.image
@@ -8,7 +8,7 @@ export function renderLayout(metadata, content, menuRubros = []) {
     <meta property="og:image:height" content="628">
     <meta name="twitter:image" content="${escapeHtml(metadata.image)}">`
         : '';
-    const parentRubros = menuRubros.filter((rubro) => !rubro.nombrePadre);
+    const parentRubros = menuRubros.filter((rubro) => !rubro.nombrePadre).sort(compareRubrosByOrder);
     const menuLinks = [
         '<a href="/">Inicio</a>',
         ...parentRubros.map((rubro) => `<a href="${getRubroPath(rubro)}">${escapeHtml(rubro.nombre)}</a>`),
@@ -119,7 +119,8 @@ export function renderRealDataLoadFailed() {
     </section>
   `;
 }
-export function renderRubroDetail(rubro, imageUrl) {
+export function renderRubroDetail(rubro, children = [], imageUrl) {
+    const sortedChildren = [...children].sort(compareRubrosByOrder);
     return `
     <article class="rubro-detail">
       ${imageUrl ? `<img class="cover" src="${escapeHtml(imageUrl)}" alt="">` : ''}
@@ -129,6 +130,15 @@ export function renderRubroDetail(rubro, imageUrl) {
         <p>${escapeHtml(getDescription(rubro))}</p>
       </div>
     </article>
+    ${sortedChildren.length > 0 ? `
+      <section class="section-title child-rubros-title">
+        <div>
+          <p>Subrubros</p>
+          <h2>${escapeHtml(rubro.nombre)}</h2>
+        </div>
+      </section>
+      ${renderRubroGrid(sortedChildren)}
+    ` : ''}
   `;
 }
 function renderRubroGrid(rubros) {
@@ -153,4 +163,8 @@ function renderRubroCard(rubro) {
 }
 export function getDescription(rubro) {
     return rubro.descripcion?.trim() || `${rubro.nombre} en CRV4 Mayorista.`;
+}
+export function compareRubrosByOrder(first, second) {
+    const orderDifference = Number(first.orden ?? 0) - Number(second.orden ?? 0);
+    return orderDifference || compareCodes(first.codigo, second.codigo);
 }

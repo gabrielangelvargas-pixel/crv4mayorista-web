@@ -359,6 +359,10 @@ h2 {
   max-width: 980px;
 }
 
+.child-rubros-title {
+  margin-top: 34px;
+}
+
 .cover {
   width: 100%;
   aspect-ratio: 1.91 / 1;
